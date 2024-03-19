@@ -12,7 +12,7 @@
       emailAddress,
       password,
       Course - который он себе выбрал
-      List<TestResult> testResult   - ссылка на обьект
+      List<TestResult> testResult   - ссылка на объект
 
 
 2) Course - содержит один окончательный тест    //(кол-во курсов всего 3)
