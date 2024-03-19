@@ -59,6 +59,41 @@
  контент, вопросы
 
 
+ backEnd
+        - Entity
+         + Student
+         + Course
+         + Test
+         + Question
+         + TestResult
+         + Admin    ?
+         + Analitic ?
+
+        - Repository
+        + RepositoryInterface (add, delete, update(set), find by..., findAll(?))  //<T> - ? / для каждой ентити
+         + StudentsRepository для хранения студентов
+         + CourseRepository   для хранения курсов
+         + TestRepository для хранения тестов
+         + QuestionRepository
+         + TestResultRepository
+
+       - dto
+         + Student
+         + Kurs
+         + Test
+         + учебный материал
+
+       - servise
+         +  для работы с Student (create, validation, add, remove, find by...)
+         +  для работы с Kurs  (create, validation, add, remove, find by...)
+         + и для тестов наверняка
+         + принт любого списка
+
+ frontEnd
+       - UserMenu for Student
+       - UserMenu for Admin
+
+
 
 
 
