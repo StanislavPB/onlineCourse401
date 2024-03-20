@@ -78,29 +78,31 @@
          + TestResultsRepository
 
        - dto
-         + StudentDto (= request)
-         + CourseDto (= request)
+   =      + StudentDto (= request)
+   =     + CourseDto (= request)
          + TestDto (= request)
          + ClientResponse <T>
          + TestDto ??????
          + QuestionDto  ???
+         + AnalyticsDTO
 
        - servise
                  -  Validation  ???
                    + ValidationException extends RuntimeException (? на что здесь проверяет данные ?)
                    + ValidationRequest  (несколько методов: checkLoginData для Student и Admin)
-         +  StudentService       для работы с StudentsRepository  (add (Request: StudentDto, Response: ClientResponse), remove (Request: StudentDto, Response: ClientResponse), find by id (Request: Integer studentId, Response:  ClientResponse)
-         +  CourseService        для работы с CoursesRepository  (add (Request: CourseDto, Response: ClientResponse), remove (Request: CourseDto, Response: ClientResponse), find by id (Request: Integer courseId, Response:  ClientResponse)
+   =      +  StudentService       для работы с StudentsRepository  (add (Request: StudentDto, Response: ClientResponse), remove (Request: StudentDto, Response: ClientResponse), find by id (Request: Integer studentId, Response:  ClientResponse)
+   =      +  CourseService        для работы с CoursesRepository  (add (Request: CourseDto, Response: ClientResponse), remove (Request: CourseDto, Response: ClientResponse), find by id (Request: Integer courseId, Response:  ClientResponse)
        ???  +  TestService          для работы с TestsRepository  (create, validation, add, remove, find by...)
        ???  +  QuestionService      для работы с QuestionsRepository  (create, validation, add, remove, find by...)
          +  TestResultService    для работы с TestResultsRepository  (, ???????, add, remove, find by...)
          +  AnalyticService      data validation: что нужно этим методам на входе? что выдавать будут?
          +  StudentLoader  ???? (сохранение истории в CSV)
+         +  UploadData     (методы загрузки данный из CSV)    --------- для каждой Entity отдельный
 
          + PrintService (разные методы принт любого списка (= findAll))
 
  frontEnd !!!???
-       -  HeadMenu ("Hello, make your choice:
+  =      -  HeadMenu ("Hello, make your choice:
        0. Student
        1. Admin "
               - StudentUserMenu for Student
