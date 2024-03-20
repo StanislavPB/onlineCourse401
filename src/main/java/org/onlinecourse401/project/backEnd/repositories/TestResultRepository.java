@@ -13,20 +13,9 @@ public class TestResultRepository implements TestResultRepositoryInterface{
         this.testResults = new ArrayList<>();
     }
 
-    public List<TestResult> getTestResults() {
-        return testResults;
-    }
-
     @Override
-    public String toString() {
-        return "результат тестирования:" + "Результат теста - " + testResults;
-    }
-
-
-    @Override
-    public List<TestResult> add(TestResult testResult) {
-        List<TestResult> results= new ArrayList<>();
-        results.add(testResult);
-        return results;
+    public TestResult add(TestResult newTestResult) {
+        testResults.add(newTestResult);
+        return newTestResult;
     }
 }
