@@ -45,8 +45,8 @@ public class UploadCourseData {
 
         CourseDto courseDto = new CourseDto(courseName,description,Arrays.asList(content1,content2),testControlDtoList);
 
-        ClientResponse<Integer> addResult = service.addNewCourse(courseDto);
-        System.out.println(addResult);
+        ClientResponse<Integer> addCourse1 = service.addNewCourse(courseDto);
+        System.out.println(addCourse1);
     }
 }
 
