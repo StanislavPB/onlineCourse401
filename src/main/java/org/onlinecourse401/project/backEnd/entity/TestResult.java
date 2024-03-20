@@ -1,16 +1,18 @@
 package org.onlinecourse401.project.backEnd.entity;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TestResult {
     private Integer courseId;
-    private List<Integer> studentAnswers;
-    private Double currentGrade;
+    private Map<Integer, Integer> studentAnswers;
+    private Integer countOfRightAnswers;
 
-    public TestResult(Integer courseId, List<Integer> studentAnswers, Double currentGrade) {
+    public TestResult(Integer courseId, Integer currentGrade) {
         this.courseId = courseId;
-        this.studentAnswers = studentAnswers;
-        this.currentGrade = currentGrade;
+        this.studentAnswers = new HashMap<>();
+        this.countOfRightAnswers = currentGrade;
     }
 
     public Integer getCourseId() {
@@ -21,20 +23,21 @@ public class TestResult {
         this.courseId = courseId;
     }
 
-    public List<Integer> getStudentAnswers() {
+
+    public Map<Integer, Integer> getStudentAnswers() {
         return studentAnswers;
     }
 
-    public void setStudentAnswers(List<Integer> studentAnswers) {
+    public void setStudentAnswers(Map<Integer, Integer> studentAnswers) {
         this.studentAnswers = studentAnswers;
     }
 
-    public Double getCurrentGrade() {
-        return currentGrade;
+    public Integer getCurrentGrade() {
+        return countOfRightAnswers;
     }
 
     public void setCurrentGrade(Double currentGrade) {
-        this.currentGrade = currentGrade;
+        this.countOfRightAnswers = countOfRightAnswers;
     }
 
     @Override
@@ -42,7 +45,7 @@ public class TestResult {
         return "TestResult{" +
                 "courseId=" + courseId +
                 ", studentAnswers=" + studentAnswers +
-                ", currentGrade=" + currentGrade +
+                ", currentGrade=" + countOfRightAnswers +
                 '}';
     }
 }
