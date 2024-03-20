@@ -3,21 +3,21 @@ package org.onlinecourse401.project.backEnd.entity;
 import java.util.List;
 
 public class TestResult {
-    private int courseId;
+    private Integer courseId;
     private List<Integer> studentAnswers;
-    private double currentGrade;
+    private Double currentGrade;
 
-    public TestResult(int courseId, List<Integer> studentAnswers, double currentGrade) {
+    public TestResult(Integer courseId, List<Integer> studentAnswers, Double currentGrade) {
         this.courseId = courseId;
         this.studentAnswers = studentAnswers;
         this.currentGrade = currentGrade;
     }
 
-    public int getCourseId() {
+    public Integer getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(int courseId) {
+    public void setCourseId(Integer courseId) {
         this.courseId = courseId;
     }
 
@@ -29,11 +29,11 @@ public class TestResult {
         this.studentAnswers = studentAnswers;
     }
 
-    public double getCurrentGrade() {
+    public Double getCurrentGrade() {
         return currentGrade;
     }
 
-    public void setCurrentGrade(double currentGrade) {
+    public void setCurrentGrade(Double currentGrade) {
         this.currentGrade = currentGrade;
     }
 

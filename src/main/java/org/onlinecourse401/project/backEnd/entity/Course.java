@@ -6,13 +6,13 @@ package org.onlinecourse401.project.backEnd.entity;
 import java.util.List;
 
 public class Course {
-    private int id;
+    private Integer id;
     private String courseName;
     private String description;
     private List<String> content;
     private List<TestControl> tests;
 
-    public Course(int id, String courseName, String description, List<String> content, List<TestControl> tests) {
+    public Course(Integer id, String courseName, String description, List<String> content, List<TestControl> tests) {
         this.id = id;
         this.courseName = courseName;
         this.description = description;
@@ -20,11 +20,11 @@ public class Course {
         this.tests = tests;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Student {
-    private int id;
+    private Integer id;
     private String firstName;
     private String lastName;
     private String email;
@@ -15,7 +15,7 @@ public class Student {
     private Course currentCourse;
     private Map<Course, List<TestResult>> courseTestResults;
 
-    public Student(int id, String firstName, String lastName, String email, String password) {
+    public Student(Integer id, String firstName, String lastName, String email, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -26,11 +26,11 @@ public class Student {
     }
 
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
