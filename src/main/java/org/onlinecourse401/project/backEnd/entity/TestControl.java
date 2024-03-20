@@ -1,14 +1,13 @@
 package org.onlinecourse401.project.backEnd.entity;
 
-import org.onlinecourse401.backEnd.entity.Question;
 
 import java.util.List;
 
 public class TestControl {
     private String title;
-    private List<org.onlinecourse401.backEnd.entity.Question> questions;
+    private List<Question> questions;
 
-    public TestControl(String title, List<org.onlinecourse401.backEnd.entity.Question> questions) {
+    public TestControl(String title, List<Question> questions) {
         this.title = title;
         this.questions = questions;
     }
@@ -21,7 +20,7 @@ public class TestControl {
         this.title = title;
     }
 
-    public List<org.onlinecourse401.backEnd.entity.Question> getQuestions() {
+    public List<Question> getQuestions() {
         return questions;
     }
 
