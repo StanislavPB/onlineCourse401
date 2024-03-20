@@ -3,23 +3,23 @@ package org.onlinecourse401.project.backEnd.entity;
 import java.util.List;
 
 public class Question {
-    private int id;
+    private Integer id;
     private String text;
     private List<String> answerOptions;
-    private int correctAnswer;
+    private Integer correctAnswer;
 
-    public Question(int id, String text, List<String> answerOptions, int correctAnswer) {
+    public Question(Integer id, String text, List<String> answerOptions, Integer correctAnswer) {
         this.id = id;
         this.text = text;
         this.answerOptions = answerOptions;
         this.correctAnswer = correctAnswer;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -39,11 +39,11 @@ public class Question {
         this.answerOptions = answerOptions;
     }
 
-    public int getCorrectAnswer() {
+    public Integer getCorrectAnswer() {
         return correctAnswer;
     }
 
-    public void setCorrectAnswer(int correctAnswer) {
+    public void setCorrectAnswer(Integer correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
 
