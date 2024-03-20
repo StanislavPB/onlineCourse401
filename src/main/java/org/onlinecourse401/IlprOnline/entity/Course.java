@@ -1,4 +1,4 @@
-package org.onlinecourse401.IlprOnline.Proeckt.Entity;
+package org.onlinecourse401.IlprOnline.entity;
 
 
 
