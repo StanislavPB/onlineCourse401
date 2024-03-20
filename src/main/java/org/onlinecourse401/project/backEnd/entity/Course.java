@@ -1,8 +1,5 @@
 package org.onlinecourse401.project.backEnd.entity;
 
-
-
-
 import java.util.List;
 
 public class Course {
