@@ -1,4 +1,4 @@
-package org.onlinecourse401.entity;
+package org.onlinecourse401.project.backEnd.entity;
 
 import java.util.List;
 

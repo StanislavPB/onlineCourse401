@@ -1,5 +1,8 @@
-package org.onlinecourse401.entity;
+package org.onlinecourse401.project.backEnd.entity;
 
+
+import org.onlinecourse401.backEnd.entity.Course;
+import org.onlinecourse401.backEnd.entity.TestResult;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,8 +14,8 @@ public class Student {
     private String lastName;
     private String email;
     private String password;
-    private Course currentCourse;
-    private Map<Course, List<TestResult>> courseTestResults;
+    private org.onlinecourse401.backEnd.entity.Course currentCourse;
+    private Map<org.onlinecourse401.backEnd.entity.Course, List<TestResult>> courseTestResults;
 
     public Student(int id, String firstName, String lastName, String email, String password) {
         this.id = id;
@@ -65,15 +68,15 @@ public class Student {
         this.password = password;
     }
 
-    public Course getCurrentCourse() {
+    public org.onlinecourse401.backEnd.entity.Course getCurrentCourse() {
         return currentCourse;
     }
 
-    public void setCurrentCourse(Course currentCourse) {
+    public void setCurrentCourse(org.onlinecourse401.backEnd.entity.Course currentCourse) {
         this.currentCourse = currentCourse;
     }
 
-    public Map<Course, List<TestResult>> getCourseTestResults() {
+    public Map<org.onlinecourse401.backEnd.entity.Course, List<TestResult>> getCourseTestResults() {
         return courseTestResults;
     }
 

@@ -1,7 +1,9 @@
-package org.onlinecourse401.entity;
+package org.onlinecourse401.project.backEnd.entity;
 
 
 
+
+import org.onlinecourse401.backEnd.entity.TestControl;
 
 import java.util.List;
 
