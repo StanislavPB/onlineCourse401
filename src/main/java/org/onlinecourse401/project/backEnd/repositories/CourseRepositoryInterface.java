@@ -13,4 +13,5 @@ public interface CourseRepositoryInterface {
     public Optional<Course> findByCourseName(String courseName);
 
     public List<Course> findAll();
+    public boolean remove(Integer courseId);
 }

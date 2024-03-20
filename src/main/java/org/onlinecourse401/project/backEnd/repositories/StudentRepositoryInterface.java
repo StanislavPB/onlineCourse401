@@ -13,4 +13,5 @@ public interface StudentRepositoryInterface {
     public Optional<Student> findByLastName(String LastName);
 
     public List<Student> findAll();
+    public boolean remove(Integer studentId);
 }

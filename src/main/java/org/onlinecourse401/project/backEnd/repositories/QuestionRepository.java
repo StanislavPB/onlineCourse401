@@ -28,7 +28,9 @@ public class QuestionRepository implements QuestionRepositoryInterface {
     @Override
     public Optional<Question> findById(Integer id) {
         for (Question question : questions){
-            if (question.getId().equals(id));
+            if (question.getId().equals(id)){
+                return Optional.of(question);
+            }
         }
         return Optional.empty();
     }

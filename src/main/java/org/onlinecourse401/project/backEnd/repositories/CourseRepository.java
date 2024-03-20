@@ -1,12 +1,14 @@
 package org.onlinecourse401.project.backEnd.repositories;
 
 import org.onlinecourse401.project.backEnd.entity.Course;
+import org.onlinecourse401.project.backEnd.entity.TestControl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
-public class CourseRepository implements CourseRepositoryInterface{
+public class CourseRepository implements CourseRepositoryInterface {
     private Integer courseId = 0;
 
     private List<Course> courses;
@@ -24,22 +26,44 @@ public class CourseRepository implements CourseRepositoryInterface{
 
     @Override
     public Optional<Course> findById(Integer id) {
-        for (Course course : courses){
-            if (course.getId().equals(id));
-        }
-        return Optional.empty();
-    } 
+        for (Course course : courses) {
+            if (course.getId().equals(id))
+            {
+                return Optional.of(course);
+            }
 
-    @Override
-    public Optional<Course> findByCourseName(String courseName) {
-        for (Course course : courses){
-            if (course.getCourseName().equals(courseName));
-        }
-        return Optional.empty();
+        } return Optional.empty();
     }
 
+
+        @Override
+        public Optional<Course> findByCourseName(String courseName){
+            for (Course course : courses) {
+                if (course.getCourseName().equals(courseName))
+                {
+                    return Optional.of(course);
+                }
+            } return Optional.empty();
+        }
+
+
+        @Override
+        public List<Course> findAll () {
+            return courses;
+        }
+
     @Override
-    public List<Course> findAll() {
-        return courses;
+    public boolean remove(Integer courseId) {
+        Iterator<Course> iterator = courses.iterator();
+        while (iterator.hasNext()) {
+            Course course = iterator.next();
+            if (course.getId().equals(courseId)) {
+                iterator.remove();
+                return true;
+            }
+        }
+
+        return false;
     }
 }
+

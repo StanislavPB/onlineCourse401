@@ -15,4 +15,5 @@ public interface QuestionRepositoryInterface {
     public Optional<Question> findByQuestion(String byQuestion);
 
     public List<Question> findAll();
+
 }
