@@ -1,4 +1,4 @@
-- регистрация нового пользователя ( student / admin )
+ - регистрация нового пользователя ( student / admin )
 1)  -Admin
       mail
       password
@@ -60,7 +60,7 @@
 
 
  backEnd
-        - Entity
+        - Entity  (Ilja)
          + Student
          + Course
          + Test
@@ -72,26 +72,44 @@
         - Repository
         + RepositoryInterface (add, delete, update(set), find by..., findAll(?))  //<T> - ? / для каждой ентити
          + StudentsRepository для хранения студентов
-         + CourseRepository   для хранения курсов
-         + TestRepository для хранения тестов
-         + QuestionRepository
-         + TestResultRepository
+         + CoursesRepository   для хранения курсов
+         + TestsRepository для хранения тестов
+         + QuestionsRepository
+         + TestResultsRepository
 
        - dto
-         + Student
-         + Kurs
-         + Test
-         + учебный материал
+         + StudentDto (= request)
+         + CourseDto (= request)
+         + TestDto (= request)
+         + ClientResponse <T>
+         + TestDto ??????
+         + QuestionDto  ???
 
        - servise
-         +  для работы с Student (create, validation, add, remove, find by...)
-         +  для работы с Kurs  (create, validation, add, remove, find by...)
-         + и для тестов наверняка
-         + принт любого списка
+                 -  Validation  ???
+                   + ValidationException extends RuntimeException (? на что здесь проверяет данные ?)
+                   + ValidationRequest  (несколько методов: checkLoginData для Student и Admin)
+         +  StudentService       для работы с StudentsRepository  (add (Request: StudentDto, Response: ClientResponse), remove (Request: StudentDto, Response: ClientResponse), find by id (Request: Integer studentId, Response:  ClientResponse)
+         +  CourseService        для работы с CoursesRepository  (add (Request: CourseDto, Response: ClientResponse), remove (Request: CourseDto, Response: ClientResponse), find by id (Request: Integer courseId, Response:  ClientResponse)
+       ???  +  TestService          для работы с TestsRepository  (create, validation, add, remove, find by...)
+       ???  +  QuestionService      для работы с QuestionsRepository  (create, validation, add, remove, find by...)
+         +  TestResultService    для работы с TestResultsRepository  (, ???????, add, remove, find by...)
+         +  AnalyticService      data validation: что нужно этим методам на входе? что выдавать будут?
+         +  StudentLoader  ???? (сохранение истории в CSV)
 
- frontEnd
-       - UserMenu for Student
-       - UserMenu for Admin
+         + PrintService (разные методы принт любого списка (= findAll))
+
+ frontEnd !!!???
+       -  HeadMenu ("Hello, make your choice:
+       0. Student
+       1. Admin "
+              - StudentUserMenu for Student
+                        = > Registration (Create Account)/ Autorisation
+                        1. View all courses
+                        2. Choice Course
+                        3. Delete account
+                        4. Exit
+              - AdminUserMenu for Admin
 
 
 
