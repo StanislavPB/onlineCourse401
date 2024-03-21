@@ -60,7 +60,7 @@ public class UploadCourseData {
         List<TestControl> testControlList = testControlService.createTestControlList(testControlDtoList,questionList);
         System.out.println(testControlList);
 
-        String courseName = "Java Pro";
+        String courseName = "1. Java Pro";
         String description = "This course covers advanced Java programming concepts.";
         String content1 = "path/to/content1/file.txt";
         String content2 = "path/to/content2/file.txt";
