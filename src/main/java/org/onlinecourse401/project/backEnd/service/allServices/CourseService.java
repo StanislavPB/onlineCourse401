@@ -1,13 +1,12 @@
 package org.onlinecourse401.project.backEnd.service.allServices;
 
-import jdk.incubator.vector.VectorOperators;
+
 import org.onlinecourse401.project.backEnd.dto.ClientResponseDto;
 import org.onlinecourse401.project.backEnd.dto.CourseDto;
-import org.onlinecourse401.project.backEnd.dto.QuestionDto;
+
 import org.onlinecourse401.project.backEnd.dto.TestControlDto;
 import org.onlinecourse401.project.backEnd.entity.Course;
-import org.onlinecourse401.project.backEnd.entity.Question;
-import org.onlinecourse401.project.backEnd.entity.TestControl;
+
 import org.onlinecourse401.project.backEnd.repositories.CourseRepositoryInterface;
 
 import java.util.ArrayList;
@@ -34,12 +33,12 @@ public class CourseService {
         CourseDto courseDto = new CourseDto(courseName,description, newContentList,testsDto);
         return courseDto;
     }
-   /* public Course createNewCourse(CourseDto newCourseDto) {
+   public Course createNewCourse(CourseDto newCourseDto) {
         Course newCourse = new Course(null, newCourseDto.getCourseName(), newCourseDto.getDescription(), newCourseDto.getContent(),testControlService.createTestControlList(newCourseDto.getTests()));
       return   courseRepository.add(newCourse);
     }
 
-    */
+
     public ClientResponseDto<Course> addNewCourse(CourseDto newCourseDto){
        // validationRequest.checkRequest(newCourseDto);
         Course newCourse = new Course(null, newCourseDto.getCourseName(), newCourseDto.getDescription(), newCourseDto.getContent(),testControlService.createTestControlList(newCourseDto.getTests()));

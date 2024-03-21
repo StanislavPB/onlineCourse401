@@ -1,4 +1,4 @@
-package org.onlinecourse401.project.frontEnd.adminInput;
+/*package org.onlinecourse401.project.frontEnd.adminInput;
 
 import org.onlinecourse401.project.backEnd.dto.ClientResponseDto;
 import org.onlinecourse401.project.backEnd.dto.CourseDto;
@@ -38,6 +38,9 @@ public class UploadCourseData {
         String textOption2Q3 = "1. '==' checks for object equality, while '.equals()' checks for reference equality.";
         Integer rightOptionIndexQ3 = 1;
 
+    }
+}
+/*
         QuestionDto questionDto1 = new QuestionDto(textQuestion1, Arrays.asList(textOption1Q1,textOption2Q1),rightOptionIndexQ1);
         QuestionDto questionDto2 = new QuestionDto(textQuestion2,Arrays.asList(textOption1Q2,textOption2Q2),rightOptionIndexQ2);
         QuestionDto questionDto3 = new QuestionDto(textQuestion3,Arrays.asList(textOption1Q3,textOption2Q3),rightOptionIndexQ3);
@@ -49,7 +52,7 @@ public class UploadCourseData {
 
         CourseDto courseDto = new CourseDto(courseName,description,Arrays.asList(content1,content2),testControlDtoList);
 
-        ClientResponseDto<Integer> addCourse1 = service.addNewCourse(courseDto);
+        //ClientResponseDto<Integer> addCourse1 = service.addNewCourse(courseDto);
         System.out.println(addCourse1);
     }
 }

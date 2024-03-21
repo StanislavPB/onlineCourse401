@@ -27,9 +27,11 @@ public class QuestionService {
         QuestionDto questionDto = new QuestionDto(text,questionOptions,correctAnswer);
         return questionDto;
     }
-    public List<QuestionDto> createQuestionDtoList(QuestionDto questionDto){
+    public List<QuestionDto> createQuestionDtoList(QuestionDto questionDto1,QuestionDto questionDto2,QuestionDto questionDto3){
         List<QuestionDto> questionDtoList = new ArrayList<>();
-        questionDtoList.add(questionDto);
+        questionDtoList.add(questionDto1);
+        questionDtoList.add(questionDto2);
+        questionDtoList.add(questionDto3);
         return questionDtoList;
 }
 

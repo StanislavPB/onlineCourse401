@@ -1,6 +1,5 @@
 package org.onlinecourse401.project.backEnd.repositories;
 
-import org.onlinecourse401.project.backEnd.entity.Course;
 import org.onlinecourse401.project.backEnd.entity.Student;
 
 import java.util.ArrayList;
@@ -39,9 +38,9 @@ public class StudentRepository implements StudentRepositoryInterface {
     }
 
     @Override
-    public Optional<Student> findByLastName(String LastName) {
+    public Optional<Student> findByLastName(String Name) {
         for (Student student : students){
-            if (student.getLastName().equals(LastName)){
+            if (student.getName().equals(Name)){
                 return Optional.of(student);
             }
         }
