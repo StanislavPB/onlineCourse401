@@ -35,10 +35,8 @@ public class QuestionService {
 
     public List<Question> createQuestionList(List<QuestionDto> questionDtoList){
         for (QuestionDto questionDto : questionDtoList){
-           // Integer id;
-          Question newQuestion =  questionRepository.add(null,questionDto.getText(),questionDto.getAnswerOptions(),questionDto.getCorrectAnswer());
-            questionRepository.add(newQuestion); // Add the new question to the repository
-
+            Question newQuestion =   new Question(null,questionDto.getText(),questionDto.getAnswerOptions(),questionDto.getCorrectAnswer());
+            questionRepository.add(newQuestion);
         }
         return questionRepository.findAll();
     }
