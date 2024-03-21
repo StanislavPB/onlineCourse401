@@ -1,5 +1,6 @@
 package org.onlinecourse401.project.frontEnd.adminInput;
 
+import org.onlinecourse401.project.backEnd.dto.ClientResponseDto;
 import org.onlinecourse401.project.backEnd.dto.CourseDto;
 import org.onlinecourse401.project.backEnd.dto.QuestionDto;
 import org.onlinecourse401.project.backEnd.dto.TestControlDto;
@@ -65,8 +66,11 @@ public class UploadCourseData {
         String content2 = "path/to/content2/file.txt";
         List<String> contents = courseService.createContentList(content1,content2);
         CourseDto courseDto = courseService.createCourseDto(courseName,description,contents,testControlDtoList);
-        Course course1 = courseService.createNewCourse(courseDto,testControlList);
-        System.out.println(course1);
+       // Course course1 = courseService.createNewCourse(courseDto,testControlList);
+      //  System.out.println(course1);
+        ClientResponseDto<Course> course1 = courseService.addNewCourse(courseDto,testControlList);
+        System.out.println(course1.getResponseCode() + course1.getMessage() + course1.getResponseInfo());
+
 
 
     }
