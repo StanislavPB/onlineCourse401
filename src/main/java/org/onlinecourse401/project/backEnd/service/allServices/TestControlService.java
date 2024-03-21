@@ -2,7 +2,6 @@ package org.onlinecourse401.project.backEnd.service.allServices;
 
 import org.onlinecourse401.project.backEnd.dto.QuestionDto;
 import org.onlinecourse401.project.backEnd.dto.TestControlDto;
-import org.onlinecourse401.project.backEnd.entity.Question;
 import org.onlinecourse401.project.backEnd.entity.TestControl;
 import org.onlinecourse401.project.backEnd.repositories.TestControlRepositoryInterface;
 
@@ -10,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestControlService {
+    QuestionService questionService;
     private final TestControlRepositoryInterface testControlRepository;
+
 
     public TestControlService(TestControlRepositoryInterface testControlRepository) {
         this.testControlRepository = testControlRepository;
@@ -26,7 +27,7 @@ public class TestControlService {
     }
     public List<TestControl> createTestControlList(List<TestControlDto> testControlDtoList){
         for (TestControlDto testControlDto : testControlDtoList){
-            TestControl newTestControl = new TestControl(null,testControlDto.getTitle(),testControlDto.getQuestionDto());
+            TestControl newTestControl = new TestControl(null,testControlDto.getTitle(),questionService.createQuestionList(testControlDto.getQuestionDto()));
            testControlRepository.add(newTestControl);
             // repository.add(.... в том чмсле - результат работы метода questionService.createQuestionList(testControlDto.getQuestionDto()))
         }

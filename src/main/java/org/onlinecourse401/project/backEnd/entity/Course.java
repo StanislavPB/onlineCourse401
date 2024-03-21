@@ -9,7 +9,8 @@ public class Course {
     private List<String> content;
     private List<TestControl> tests;
 
-    public Course(String courseName, String description, List<String> content, List<TestControl> tests) {
+    public Course(Integer id, String courseName, String description, List<String> content, List<TestControl> tests) {
+        this.id = id;
         this.courseName = courseName;
         this.description = description;
         this.content = content;
