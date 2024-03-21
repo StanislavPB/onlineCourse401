@@ -1,6 +1,8 @@
 package org.onlinecourse401.project.frontEnd.adminInput;
 
+import org.onlinecourse401.project.backEnd.dto.ClientResponseDto;
 import org.onlinecourse401.project.backEnd.dto.CourseDto;
+import org.onlinecourse401.project.backEnd.dto.QuestionDto;
 import org.onlinecourse401.project.backEnd.dto.TestControlDto;
 import org.onlinecourse401.project.frontEnd.util.UserInput;
 
@@ -47,7 +49,7 @@ public class UploadCourseData {
 
         CourseDto courseDto = new CourseDto(courseName,description,Arrays.asList(content1,content2),testControlDtoList);
 
-        ClientResponse<Integer> addCourse1 = service.addNewCourse(courseDto);
+        ClientResponseDto<Integer> addCourse1 = service.addNewCourse(courseDto);
         System.out.println(addCourse1);
     }
 }
