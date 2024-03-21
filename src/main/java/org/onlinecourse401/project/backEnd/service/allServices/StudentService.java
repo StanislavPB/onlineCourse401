@@ -30,10 +30,12 @@ public class StudentService {
     }
 
 //Step1:
-    //1.metod: createListCoursesByStudent входные параметры метода: колекция всех курсов школы и Integer courseId
-    //
-    // пройтись по коллекции из CourseRepisitory и сравнить по id,
-    // na vyhod: List<Course> coursesByStudent
+    //1.metod: sozdaem list / korzinu kursov,kotorye hochet projti student:
+    // public List<Course> createListCoursesByStudent(Integer courseId)
+    // Course chosenCourse = CourseService.findById(courseId);
+    // List<Course> coursesByStudent = new ArrayList();
+    // coursesByStudent.add(chosenCourse);
+    // return coursesByStudent;
 
 //Step2:
      //2.metod: aktualizirovanie parametrov studenta:
@@ -45,7 +47,8 @@ public class StudentService {
 
 //Step3:
 
-    //  kollekcija sozdaetsja v klasse TestResultService, potom:
+    //  kollekcija List<TestResult>> courseTestResults ili ??? Map<Course, List<TestResult>>
+    //  sozdaetsja v klasse TestResultService, potom:
 
 //Step5:
     //3. metod: aktualizirovanie parametrov studenta s kollekciej TestResult,

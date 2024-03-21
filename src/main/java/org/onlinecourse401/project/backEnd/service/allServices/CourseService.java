@@ -15,7 +15,8 @@ import java.util.List;
 
 //addNewCourse (Request: CourseDto, Response: ClientResponse),
 // remove (Request: CourseDto, Response: ClientResponse),
-// find by id (Request: Integer courseId, Response:  ClientResponse)
+// find by id (Request: Integer courseId, Response:  ClientResponse<Course>)
+// findAll
 public class CourseService {
     TestControlService testControlService;
     private final CourseRepositoryInterface courseRepository;
