@@ -1,17 +1,27 @@
 package org.onlinecourse401.project.frontEnd.adminInput;
 
+import org.onlinecourse401.project.backEnd.dto.CourseDto;
 import org.onlinecourse401.project.backEnd.dto.QuestionDto;
+import org.onlinecourse401.project.backEnd.dto.TestControlDto;
+import org.onlinecourse401.project.backEnd.entity.Course;
 import org.onlinecourse401.project.backEnd.entity.Question;
+import org.onlinecourse401.project.backEnd.entity.TestControl;
+import org.onlinecourse401.project.backEnd.service.allServices.CourseService;
 import org.onlinecourse401.project.backEnd.service.allServices.QuestionService;
+import org.onlinecourse401.project.backEnd.service.allServices.TestControlService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UploadQuestionData {
+    private final CourseService courseService;
     private final QuestionService questionService;
+    private final TestControlService testControlService;
 
-    public UploadQuestionData(QuestionService questionService) {
+    public UploadQuestionData(CourseService courseService, QuestionService questionService, TestControlService testControlService) {
+        this.courseService = courseService;
         this.questionService = questionService;
+        this.testControlService = testControlService;
     }
     public void inputQuestionData() {
 
@@ -30,7 +40,7 @@ public class UploadQuestionData {
         String textOption2Q3 = "1. '==' checks for object equality, while '.equals()' checks for reference equality.";
         String textOption3Q3 = "2. '==' checks for object equality, while '.equals()' checks for reference equality.";
         Integer rightOptionIndexQ3 = 1;
-        List<String> optionsQ1 = questionService.createOptionsList(textOption1Q1, textOption1Q2, textOption3Q1);
+        List<String> optionsQ1 = questionService.createOptionsList(textOption1Q1, textOption2Q1, textOption3Q1);
         QuestionDto questionDto1 = questionService.createQuestionDto(textQuestion1, optionsQ1, rightOptionIndexQ1);
 
         List<String> optionsQ2 = questionService.createOptionsList(textOption1Q2, textOption2Q2, textOption3Q2);
@@ -43,6 +53,22 @@ public class UploadQuestionData {
         List<Question> questionList = questionService.createQuestionList(questionDtoList);
 
         System.out.println(questionList);
+
+        String testTitle = "Final Exam";
+        TestControlDto testControlDto1 = testControlService.creatTestControlDto(testTitle,questionDtoList);
+        List<TestControlDto> testControlDtoList =testControlService.createTestControlDtoList(testControlDto1);
+        List<TestControl> testControlList = testControlService.createTestControlList(testControlDtoList,questionList);
+        System.out.println(testControlList);
+
+        String courseName = "Java Pro";
+        String description = "This course covers advanced Java programming concepts.";
+        String content1 = "path/to/content1/file.txt";
+        String content2 = "path/to/content2/file.txt";
+        List<String> contents = courseService.createContentList(content1,content2);
+        CourseDto courseDto = courseService.createCourseDto(courseName,description,contents,testControlDtoList);
+        Course course1 = courseService.createNewCourse(courseDto,testControlList);
+        System.out.println(course1);
+
 
     }
 

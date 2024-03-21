@@ -7,6 +7,7 @@ import org.onlinecourse401.project.backEnd.dto.CourseDto;
 import org.onlinecourse401.project.backEnd.dto.TestControlDto;
 import org.onlinecourse401.project.backEnd.entity.Course;
 
+import org.onlinecourse401.project.backEnd.entity.TestControl;
 import org.onlinecourse401.project.backEnd.repositories.CourseRepositoryInterface;
 
 import java.util.ArrayList;
@@ -33,15 +34,15 @@ public class CourseService {
         CourseDto courseDto = new CourseDto(courseName,description, newContentList,testsDto);
         return courseDto;
     }
-   public Course createNewCourse(CourseDto newCourseDto) {
-        Course newCourse = new Course(null, newCourseDto.getCourseName(), newCourseDto.getDescription(), newCourseDto.getContent(),testControlService.createTestControlList(newCourseDto.getTests()));
+   public Course createNewCourse(CourseDto newCourseDto, List<TestControl> testControlList) {
+        Course newCourse = new Course(null, newCourseDto.getCourseName(), newCourseDto.getDescription(), newCourseDto.getContent(),testControlList);
       return   courseRepository.add(newCourse);
     }
 
 
-    public ClientResponseDto<Course> addNewCourse(CourseDto newCourseDto){
+    public ClientResponseDto<Course> addNewCourse(CourseDto newCourseDto, List<TestControl> testControlList){
        // validationRequest.checkRequest(newCourseDto);
-        Course newCourse = new Course(null, newCourseDto.getCourseName(), newCourseDto.getDescription(), newCourseDto.getContent(),testControlService.createTestControlList(newCourseDto.getTests()));
+        Course newCourse = new Course(null, newCourseDto.getCourseName(), newCourseDto.getDescription(), newCourseDto.getContent(),testControlList);
        courseRepository.add(newCourse);
         if (newCourse != null) {
             return new ClientResponseDto<>(200, newCourse, "Course is added successful.");
