@@ -32,23 +32,30 @@ public class StudentService {
         }
     }
 
-
+//Step1:
     //1.metod: createListCoursesByStudent входные параметры метода: колекция всех курсов школы и Integer courseId
     //
     // пройтись по коллекции из CourseRepisitory и сравнить по id,
     // na vyhod: List<Course> coursesByStudent
 
-
+//Step2:
      //2.metod: aktualizirovanie parametrov studenta:
-    // mergeStudent(List<Course> coursesByStudent, String email) {
-    // for List<Student> students
-    // if (students.getEmail().equals(email)) {
+    // setCoursesByStudentInStudent(List<Course> coursesByStudent, String email) {
+    // for (Student student : List<Student> students)
+    // if (student.getEmail().equals(email)) {
     //  Student.setCoursesByStudent(coursesByStudent)
     // na vyhod: Student s obnovlennymi dannymi
 
+//Step3:
 
     //  kollekcija sozdaetsja v klasse TestResultService, potom:
+
+//Step5:
     //3. metod: aktualizirovanie parametrov studenta s kollekciej TestResult,
+    // setTestResultsToStudent(Map<Course, List<TestResult>> courseTestResults, String email) {
+    // for (Student student : List<Student> students)
+    // if (student.getEmail().equals(email)) {
+    //Map<Course, List<TestResult>> Student.getCoursesByStudent().getCourse(),courseTestResults
     //  Student.setCourseTestResults(courseTestResults)
 
 
