@@ -68,8 +68,8 @@ public class UploadCourseData {
         CourseDto courseDto = courseService.createCourseDto(courseName,description,contents,testControlDtoList);
        // Course course1 = courseService.createNewCourse(courseDto,testControlList);
       //  System.out.println(course1);
-        ClientResponseDto<Course> course1 = courseService.addNewCourse(courseDto,testControlList);
-        System.out.println(course1.getResponseCode() + course1.getMessage() + course1.getResponseInfo());
+        ClientResponseDto<String> course1 = courseService.addNewCourse(courseDto,testControlList);
+        System.out.println("Response code: "+course1.getResponseCode()+"; Info:"+ course1.getMessage()+ "; Course: "+ course1.getResponseInfo());
 
 
 

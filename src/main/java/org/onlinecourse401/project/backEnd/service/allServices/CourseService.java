@@ -34,20 +34,23 @@ public class CourseService {
         CourseDto courseDto = new CourseDto(courseName,description, newContentList,testsDto);
         return courseDto;
     }
+
+    /*
    public Course createNewCourse(CourseDto newCourseDto, List<TestControl> testControlList) {
         Course newCourse = new Course(null, newCourseDto.getCourseName(), newCourseDto.getDescription(), newCourseDto.getContent(),testControlList);
       return   courseRepository.add(newCourse);
     }
+     */
 
 
-    public ClientResponseDto<Course> addNewCourse(CourseDto newCourseDto, List<TestControl> testControlList){
+    public ClientResponseDto<String> addNewCourse(CourseDto newCourseDto, List<TestControl> testControlList){
        // validationRequest.checkRequest(newCourseDto);
         Course newCourse = new Course(null, newCourseDto.getCourseName(), newCourseDto.getDescription(), newCourseDto.getContent(),testControlList);
        courseRepository.add(newCourse);
         if (newCourse != null) {
-            return new ClientResponseDto<>(200, newCourse, "Course is added successful.");
+            return new ClientResponseDto<>(200, newCourse.getCourseName(), "Course is added successful.");
         } else {
-            return new ClientResponseDto<>(250, newCourse, "Course is not added.");
+            return new ClientResponseDto<>(250, newCourse.getCourseName(), "Course is not added.");
         }
     }
 
