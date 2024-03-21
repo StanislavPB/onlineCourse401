@@ -2,29 +2,27 @@ package org.onlinecourse401.project.backEnd.entity;
 
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Student {
     private Integer id;
-    private String firstName;
-    private String lastName;
+    private String name;
     private String email;
     private String password;
-    private Course currentCourse;
+    private List<Course> courses;
     private Map<Course, List<TestResult>> courseTestResults;
 
-    public Student(Integer id, String firstName, String lastName, String email, String password) {
+    public Student(Integer id, String name, String email, String password) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name = name;
         this.email = email;
         this.password = password;
-        this.currentCourse = null;
+        this.courses = new ArrayList<>();
         this.courseTestResults = new HashMap<>();
     }
-
 
     public Integer getId() {
         return id;
@@ -34,20 +32,12 @@ public class Student {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -66,12 +56,12 @@ public class Student {
         this.password = password;
     }
 
-    public Course getCurrentCourse() {
-        return currentCourse;
+    public List<Course> getCourses() {
+        return courses;
     }
 
-    public void setCurrentCourse(Course currentCourse) {
-        this.currentCourse = currentCourse;
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
     public Map<Course, List<TestResult>> getCourseTestResults() {
@@ -86,11 +76,10 @@ public class Student {
     public String toString() {
         return "Student{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", currentCourse=" + currentCourse +
+                ", courses=" + courses +
                 ", courseTestResults=" + courseTestResults +
                 '}';
     }
