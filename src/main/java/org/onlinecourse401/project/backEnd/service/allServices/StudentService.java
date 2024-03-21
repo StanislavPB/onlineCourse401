@@ -1,11 +1,8 @@
 package org.onlinecourse401.project.backEnd.service.allServices;
 
 import org.onlinecourse401.project.backEnd.dto.ClientResponseDto;
-import org.onlinecourse401.project.backEnd.dto.CourseDto;
 import org.onlinecourse401.project.backEnd.dto.StudentDto;
-import org.onlinecourse401.project.backEnd.entity.Course;
 import org.onlinecourse401.project.backEnd.entity.Student;
-import org.onlinecourse401.project.backEnd.entity.TestControl;
 import org.onlinecourse401.project.backEnd.repositories.StudentRepositoryInterface;
 
 import java.util.List;
