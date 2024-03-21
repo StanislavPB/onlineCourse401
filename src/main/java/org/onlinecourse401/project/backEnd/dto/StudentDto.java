@@ -3,75 +3,67 @@ package org.onlinecourse401.project.backEnd.dto;
 import org.onlinecourse401.project.backEnd.entity.Course;
 import org.onlinecourse401.project.backEnd.entity.TestResult;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class StudentDto {
-    private String firstName;
-    private String lastName;
+    private String name;
     private String email;
     private String password;
-    private Course currentCourse;
+    private List<Course> courses;
     private Map<Course, List<TestResult>> courseTestResults;
 
-
-    public StudentDto(String firstName, String lastName, String email, String password) {          //for checking data for registration newStudent
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public StudentDto(String name, String email, String password) {                                 //for checking data for registration newStudent
+        this.name = name;
         this.email = email;
         this.password = password;
-        this.currentCourse = null;
+        this.courses = new ArrayList<>();
         this.courseTestResults = new HashMap<>();
     }
+
+
 
     public StudentDto(String email, String password) {        // for checking email and password for authorization
         this.email = email;
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public Course getCurrentCourse() {
-        return currentCourse;
-    }
-
-    public Map<Course, List<TestResult>> getCourseTestResults() {
-        return courseTestResults;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public void setCurrentCourse(Course currentCourse) {
-        this.currentCourse = currentCourse;
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public Map<Course, List<TestResult>> getCourseTestResults() {
+        return courseTestResults;
     }
 
     public void setCourseTestResults(Map<Course, List<TestResult>> courseTestResults) {
@@ -81,11 +73,10 @@ public class StudentDto {
     @Override
     public String toString() {
         return "StudentDto{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", currentCourse=" + currentCourse +
+                ", courses=" + courses +
                 ", courseTestResults=" + courseTestResults +
                 '}';
     }
