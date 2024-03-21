@@ -12,7 +12,7 @@ public class Student {
     private String name;
     private String email;
     private String password;
-    private List<Course> courses;
+    private List<Course> coursesByStudent;
     private Map<Course, List<TestResult>> courseTestResults;
 
     public Student(Integer id, String name, String email, String password) {
@@ -20,7 +20,7 @@ public class Student {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.courses = new ArrayList<>();
+        this.coursesByStudent = new ArrayList<>();
         this.courseTestResults = new HashMap<>();
     }
 
@@ -56,12 +56,12 @@ public class Student {
         this.password = password;
     }
 
-    public List<Course> getCourses() {
-        return courses;
+    public List<Course> getCoursesByStudent() {
+        return coursesByStudent;
     }
 
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
+    public void setCoursesByStudent(List<Course> coursesByStudent) {
+        this.coursesByStudent = coursesByStudent;
     }
 
     public Map<Course, List<TestResult>> getCourseTestResults() {
@@ -79,7 +79,7 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", courses=" + courses +
+                ", coursesByStudent=" + coursesByStudent +
                 ", courseTestResults=" + courseTestResults +
                 '}';
     }
