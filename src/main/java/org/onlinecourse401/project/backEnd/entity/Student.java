@@ -24,6 +24,10 @@ public class Student {
         this.courseTestResults = new HashMap<>();
     }
 
+    public Student(List<Course> coursesByStudent) {
+        this.coursesByStudent = coursesByStudent;
+    }
+
     public Integer getId() {
         return id;
     }
