@@ -6,6 +6,8 @@ import java.util.List;
 //2 метода
 //-переделать
 public class ValidationRequest {
+
+/*
     public boolean checkEmail(ClientRequest request){
         /*
         name != null
@@ -14,7 +16,7 @@ public class ValidationRequest {
         description != null
         description.length > 5 && < 30
 
-         */
+
 
         List<String> errors = new ArrayList<>();
 
@@ -32,5 +34,5 @@ public class ValidationRequest {
 
     public boolean checkPassword(ClientRequest request){}
 
-
+*/
 }
