@@ -13,7 +13,7 @@ public class ClientResponseDto<T> {
     // таких данных в коллекции нет
 
 
-    public ClientResponse(int responseCode, T responseInfo, String message) {
+    public ClientResponseDto(int responseCode, T responseInfo, String message) {
         this.responseCode = responseCode;
         this.responseInfo = responseInfo;
         this.message = message;

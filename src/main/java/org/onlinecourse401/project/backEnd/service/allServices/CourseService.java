@@ -2,6 +2,7 @@ package org.onlinecourse401.project.backEnd.service.allServices;
 
 import org.onlinecourse401.project.backEnd.dto.ClientResponseDto;
 import org.onlinecourse401.project.backEnd.dto.CourseDto;
+import org.onlinecourse401.project.backEnd.dto.TestControlDto;
 import org.onlinecourse401.project.backEnd.entity.Course;
 import org.onlinecourse401.project.backEnd.repositories.CourseRepositoryInterface;
 
@@ -19,13 +20,16 @@ public class CourseService {
         this.courseRepository = courseRepository;
     }
 
-    public ClientResponseDto<List<Course>> addNewCourse(){
-        List<Course> courses = courseRepository.add(CourseDto);
+    public ClientResponseDto<Course> addNewCourse(Integer id, CourseDto newCourseDto){
+        //List<Course> courses = courseRepository.add(newCourseDto);
 
-        if (!tasks.isEmpty()) {
-            return new ClientResponse<>(200, tasks, "Список задач");
+       // validationRequest.checkRequest(newCourseDto);
+        Course courseForAdd = new Course(id,newCourseDto.getCourseName(),newCourseDto.getDescription(),newCourseDto.getContent(),newCourseDto.getTests());
+        courseRepository.add(courseForAdd);
+        if (!courseForAdd.getId() > 0) {
+            return new ClientResponseDto<>(200, courseForAdd, "Список задач");
         } else {
-            return new ClientResponse<>(250, tasks, "База данных пустая!");
+            return new ClientResponseDto<>(250, courseForAdd, "База данных пустая!");
         }
     }
 }
