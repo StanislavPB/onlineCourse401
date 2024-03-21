@@ -20,16 +20,18 @@ public class CourseService {
         this.courseRepository = courseRepository;
     }
 
-    public ClientResponseDto<Course> addNewCourse(Integer id, CourseDto newCourseDto){
+    public ClientResponseDto<Course> addNewCourse(CourseDto newCourseDto){
         //List<Course> courses = courseRepository.add(newCourseDto);
 
        // validationRequest.checkRequest(newCourseDto);
-        Course courseForAdd = new Course(id,newCourseDto.getCourseName(),newCourseDto.getDescription(),newCourseDto.getContent(),newCourseDto.getTests());
+        Course courseForAdd = new Course(newCourseDto.getCourseName(),newCourseDto.getDescription(),newCourseDto.getContent(),newCourseDto.getTests());
         courseRepository.add(courseForAdd);
-        if (!courseForAdd.getId() > 0) {
-            return new ClientResponseDto<>(200, courseForAdd, "Список задач");
+        if (courseForAdd != null) {
+            return new ClientResponseDto<>(200, courseForAdd, "Course is added successful.");
         } else {
-            return new ClientResponseDto<>(250, courseForAdd, "База данных пустая!");
+            return new ClientResponseDto<>(250, courseForAdd, "Course is not added.");
         }
     }
+
+
 }

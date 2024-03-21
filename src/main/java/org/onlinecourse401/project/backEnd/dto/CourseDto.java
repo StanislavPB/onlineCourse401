@@ -1,4 +1,6 @@
 package org.onlinecourse401.project.backEnd.dto;
+import org.onlinecourse401.project.backEnd.entity.TestControl;
+
 import java.util.List;
 public class CourseDto {
         private String courseName;
@@ -17,44 +19,47 @@ public class CourseDto {
         }
 
         // Third constructor
-        public CourseDto(String courseName, String description, List<String> content, List<TestControlDto> tests) {
-            this.courseName = courseName;
-            this.description = description;
-            this.content = content;
-            this.tests = tests;
-        }
 
-        // Getters and setters for other fields
-
-        public String getCourseName() {
-            return courseName;
-        }
-
-        public void setCourseName(String courseName) {
-            this.courseName = courseName;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
-        public List<String> getContent() {
-            return content;
-        }
-
-        public void setContent(List<String> content) {
-            this.content = content;
-        }
-
-        public List<TestControlDto> getTests() {
-            return tests;
-        }
-
-        public void setTests(List<TestControlDto> tests) {
-            this.tests = tests;
-        }
+    public CourseDto(String courseName, String description, List<String> content, List<TestControlDto> tests) {
+        this.courseName = courseName;
+        this.description = description;
+        this.content = content;
+        this.tests = tests;
     }
+
+
+    // Getters and setters for other fields
+
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<String> getContent() {
+        return content;
+    }
+
+    public void setContent(List<String> content) {
+        this.content = content;
+    }
+
+    public List<TestControlDto> getTests() {
+        return tests;
+    }
+
+    public void setTests(List<TestControlDto> tests) {
+        this.tests = tests;
+    }
+}
