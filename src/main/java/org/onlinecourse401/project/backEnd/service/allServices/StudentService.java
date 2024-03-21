@@ -21,13 +21,11 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-
-
     public ClientResponseDto<String> addNewStudent(StudentDto studentDto) {
         //validation
         Student newStudent = new Student(null, null, studentDto.getEmail(), studentDto.getPassword());
         studentRepository.add(newStudent);
-        if (newStudent != null) {
+        if (newStudent.getId() > 0) {
             return new ClientResponseDto<>(200, newStudent.getEmail(), "Your account is created.");
         } else {
             return new ClientResponseDto<>(250, newStudent.getEmail(), "Your account not created. Error! Your added data are empty.");
