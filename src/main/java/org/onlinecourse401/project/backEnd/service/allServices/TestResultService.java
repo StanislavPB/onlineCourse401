@@ -22,9 +22,9 @@ public class TestResultService {
 
 
     //Step1: metod prohozhdenija testa / dachi otvetov na voprosy:
-   public List<Integer> createStudentAnswers(Student student, Integer idCourse, Integer idTest) {
-       TestControl currentTest = student.getCoursesByStudent().get(idCourse).getTests().get(idTest);
-        String test1Title = currentTest.getTitle();
+   public List<Integer> createStudentAnswers(Student student) {
+       TestControl currentTest = student.getCourseByStudent().getTest();
+        String test1Title = student.getCourseByStudent().getTest().getTitle();
         System.out.println("Evaluate test: " + test1Title);
 
         Question question1 = currentTest.getQuestions().get(0);
@@ -52,10 +52,10 @@ public class TestResultService {
     }
 
 //Step2: metod ocenki otvetov
-    public Integer calculateCurrentGrade(Student student, Integer idCourse, Integer idTest, List<Integer> studentAnswers) {
-        Integer rightOptionQ1 = student.getCoursesByStudent().get(idCourse).getTests().get(idTest).getQuestions().get(0).getCorrectAnswer();
-        Integer rightOptionQ2 = student.getCoursesByStudent().get(idCourse).getTests().get(idTest).getQuestions().get(1).getCorrectAnswer();
-        Integer rightOptionQ3 = student.getCoursesByStudent().get(idCourse).getTests().get(idTest).getQuestions().get(2).getCorrectAnswer();
+    public Integer calculateCurrentGrade(Student student, List<Integer> studentAnswers) {
+        Integer rightOptionQ1 = student.getCourseByStudent().getTest().getQuestions().get(0).getCorrectAnswer();
+        Integer rightOptionQ2 = student.getCourseByStudent().getTest().getQuestions().get(1).getCorrectAnswer();
+        Integer rightOptionQ3 = student.getCourseByStudent().getTest().getQuestions().get(2).getCorrectAnswer();
 
         List<Integer> rightOptions = new ArrayList<>();
         rightOptions.add(rightOptionQ1);

@@ -20,18 +20,11 @@ public class TestControlService {
         TestControlDto testControlDto = new TestControlDto(title,questionsDto);
         return testControlDto;
     }
-    public List<TestControlDto> createTestControlDtoList(TestControlDto testControlDto){
-        List<TestControlDto> testControlDtoList = new ArrayList<>();
-        testControlDtoList.add(testControlDto);
-        return testControlDtoList;
-    }
-    public List<TestControl> createTestControlList(List<TestControlDto> testControlDtoList, List<Question> questions){
-        for (TestControlDto testControlDto : testControlDtoList){
+
+    public TestControl createTestControl(TestControlDto testControlDto, List<Question> questions){
             TestControl newTestControl = new TestControl(null,testControlDto.getTitle(),questions);
            testControlRepository.add(newTestControl);
-            // repository.add(.... в том чмсле - результат работы метода questionService.createQuestionList(testControlDto.getQuestionDto()))
-        }
-        return testControlRepository.findAll();
+        return newTestControl;
     }
 }
 

@@ -42,20 +42,27 @@ public class StudentService {
 
 //Step1:
     //1.metod: sozdaem list / korzinu kursov,kotorye hochet projti student:
-    public List<Course> addCourseToStudent(Integer idStudent, Integer idCourse) {
-        Optional<Course> courseByStudent = courseRepository.findById(idCourse);
-        Optional<Student> currentStudent = studentRepository.findById(idStudent);
-        if (currentStudent.isPresent() && courseByStudent.isPresent()) {
-            Student student = currentStudent.get();
-            List<Course> coursesByStudent = student.getCoursesByStudent();
-            coursesByStudent.add(courseByStudent.get());
-            student.setCoursesByStudent(coursesByStudent);
-            return student.getCoursesByStudent();
-        } else {
-            // Handle the case when either student or course is not found
-            return Collections.emptyList(); // or throw an exception, return null, etc.
-        }
+public Course addCourseToStudent(Integer idStudent, Integer idCourse) {
+    Optional<Course> optionalCourse = courseRepository.findById(idCourse);
+    Optional<Student> optionalStudent = studentRepository.findById(idStudent);
+
+    if (optionalStudent.isPresent() && optionalCourse.isPresent()) {
+        Student student = optionalStudent.get();
+        Course course = optionalCourse.get();
+
+        // Add the course to the student's list of courses
+        student.setCourseByStudent(course);
+
+        // Save the updated student (assuming you have a method to save/update students)
+        studentRepository.add(student);
+
+        // Return the list of courses associated with the student
+        return student.getCourseByStudent();
+    } else {
+        // Handle the case when either student or course is not found
+        throw new IllegalArgumentException("Student or Course not found");
     }
+}
 
 //Step2:
      //2.metod: aktualizirovanie parametrov studenta:
@@ -65,10 +72,13 @@ public class StudentService {
     //  Student.setCoursesByStudent(coursesByStudent)
     // na vyhod: Student s obnovlennymi dannymi
 
-
+/*
     public Student addTestResultsToStudent (Integer idStudent, List<TestResult> testResults, Integer idCourse){
 
+        return student;
     }
+
+ */
 //Step3:
 
     //  kollekcija List<TestResult>> courseTestResults ili ??? Map<Course, List<TestResult>>

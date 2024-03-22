@@ -54,9 +54,8 @@ public class UploadCourseData {
         System.out.println(questionList);
 
         String testTitle = "Final Exam";
-        TestControlDto testControlDto1 = testControlService.creatTestControlDto(testTitle,questionDtoList);
-        List<TestControlDto> testControlDtoList =testControlService.createTestControlDtoList(testControlDto1);
-        List<TestControl> testControl = testControlService.createTestControlList(testControlDtoList,questionList);
+        TestControlDto testControlDto = testControlService.creatTestControlDto(testTitle,questionDtoList);
+        TestControl testControl = testControlService.createTestControl(testControlDto,questionList);
         System.out.println(testControl);
 
         String courseName = "1. Java Pro";
@@ -64,7 +63,7 @@ public class UploadCourseData {
         String content1 = "path/to/content1/file.txt";
         String content2 = "path/to/content2/file.txt";
         List<String> contents = courseService.createContentList(content1,content2);
-        CourseDto courseDto = courseService.createCourseDto(courseName,description,contents,testControlDto1);
+        CourseDto courseDto = courseService.createCourseDto(courseName,description,contents,testControlDto);
        // Course course1 = courseService.createNewCourse(courseDto,testControlList);
       //  System.out.println(course1);
         ClientResponseDto<String> course1 = courseService.addNewCourse(courseDto, testControl);

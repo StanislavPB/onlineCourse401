@@ -22,7 +22,7 @@ public class OnlineCourse401App {
         System.out.println();
         ValidationRequest validationRequest = new ValidationRequest();
         StudentRepositoryInterface studentRepository = new StudentRepository();
-        StudentService studentService = new StudentService(studentRepository,validationRequest);
+        StudentService studentService = new StudentService(studentRepository,validationRequest,courseRepository);
         UI ui = new UI(studentService);
         ui.inputRegistrationData();
     }

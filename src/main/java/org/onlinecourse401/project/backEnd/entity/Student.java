@@ -15,6 +15,13 @@ public class Student {
     private Course courseByStudent;
     private List<TestResult> courseTestResults;
 
+    public Student(Integer id, String name, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
     public Student(Integer id, String name, String email, String password, Course courseByStudent, List<TestResult> courseTestResults) {
         this.id = id;
         this.name = name;
