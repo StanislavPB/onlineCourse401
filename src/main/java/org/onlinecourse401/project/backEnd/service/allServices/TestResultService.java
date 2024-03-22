@@ -4,6 +4,7 @@ import org.onlinecourse401.project.backEnd.entity.Question;
 import org.onlinecourse401.project.backEnd.entity.Student;
 import org.onlinecourse401.project.backEnd.entity.TestControl;
 import org.onlinecourse401.project.backEnd.entity.TestResult;
+import org.onlinecourse401.project.backEnd.repositories.TestResultRepositoryInterface;
 import org.onlinecourse401.project.frontEnd.util.UserInput;
 
 import java.util.ArrayList;
@@ -13,7 +14,14 @@ import java.util.Map;
 public class TestResultService {
     UserInput ui = new UserInput();
 
-//Step1: metod prohozhdenija testa / dachi otvetov na voprosy:
+    private final TestResultRepositoryInterface testResultRepository;
+
+    public TestResultService(TestResultRepositoryInterface testResultRepository) {
+        this.testResultRepository = testResultRepository;
+    }
+
+
+    //Step1: metod prohozhdenija testa / dachi otvetov na voprosy:
    public List<Integer> createStudentAnswers(Student student, Integer idCourse, Integer idTest) {
        TestControl currentTest = student.getCoursesByStudent().get(idCourse).getTests().get(idTest);
         String test1Title = currentTest.getTitle();
@@ -64,9 +72,11 @@ public class TestResultService {
         return currentGrade;
 
         }
-        public List<TestResult> createTestResult(Integer courseId, List<Integer> studentAnswers, List<Integer>currentGrade){
+        public List<TestResult> createTestResult(Integer courseId, List<Integer> studentAnswers, Integer currentGrade){
+        TestResult testResult = new TestResult(courseId,studentAnswers,currentGrade);
+        testResultRepository.add(testResult);
 
-       return testTestResultList;
+       return testResultRepository.findAll();
         }
 /*
 Step3: sozdaem eksempljar klassa TestResult
@@ -74,6 +84,8 @@ Step3: sozdaem eksempljar klassa TestResult
     TestResult testResult = new TestResult(Integer courseId, Integer currentGrade,Map<Integer, Integer> studentAnswers)
     return testResult;
     }
+
+
 Step4: sozdaem collecciju iz TestResult ili Map<Course, List<TestResult>> ?????????
     List<TestResult>> courseTestResults
     metod:

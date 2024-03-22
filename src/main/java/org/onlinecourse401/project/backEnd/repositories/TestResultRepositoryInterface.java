@@ -9,5 +9,9 @@ import java.util.Optional;
 public interface TestResultRepositoryInterface {
     public TestResult add(TestResult testResult);
 
+    public List<TestResult> findAll();
+
+
+
 
 }

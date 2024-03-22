@@ -56,18 +56,18 @@ public class UploadCourseData {
         String testTitle = "Final Exam";
         TestControlDto testControlDto1 = testControlService.creatTestControlDto(testTitle,questionDtoList);
         List<TestControlDto> testControlDtoList =testControlService.createTestControlDtoList(testControlDto1);
-        List<TestControl> testControlList = testControlService.createTestControlList(testControlDtoList,questionList);
-        System.out.println(testControlList);
+        List<TestControl> testControl = testControlService.createTestControlList(testControlDtoList,questionList);
+        System.out.println(testControl);
 
         String courseName = "1. Java Pro";
         String description = "This course covers advanced Java programming concepts.";
         String content1 = "path/to/content1/file.txt";
         String content2 = "path/to/content2/file.txt";
         List<String> contents = courseService.createContentList(content1,content2);
-        CourseDto courseDto = courseService.createCourseDto(courseName,description,contents,testControlDtoList);
+        CourseDto courseDto = courseService.createCourseDto(courseName,description,contents,testControlDto1);
        // Course course1 = courseService.createNewCourse(courseDto,testControlList);
       //  System.out.println(course1);
-        ClientResponseDto<String> course1 = courseService.addNewCourse(courseDto,testControlList);
+        ClientResponseDto<String> course1 = courseService.addNewCourse(courseDto, testControl);
         System.out.println("Response code: "+course1.getResponseCode()+"; Info:"+ course1.getMessage()+ "; Course: "+ course1.getResponseInfo());
 
 

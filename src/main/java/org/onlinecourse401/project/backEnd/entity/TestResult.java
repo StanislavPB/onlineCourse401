@@ -10,10 +10,12 @@ public class TestResult {
     private List<Integer> studentAnswers;
     private Integer countOfRightAnswers;
 
-    public TestResult(Integer courseId, Integer currentGrade) {
+
+
+    public TestResult(Integer courseId, List<Integer> studentAnswers, Integer countOfRightAnswers) {
         this.courseId = courseId;
-        this.studentAnswers = new ArrayList<>();
-        this.countOfRightAnswers = currentGrade;
+        this.studentAnswers = studentAnswers;
+        this.countOfRightAnswers = countOfRightAnswers;
     }
 
     public Integer getCourseId() {

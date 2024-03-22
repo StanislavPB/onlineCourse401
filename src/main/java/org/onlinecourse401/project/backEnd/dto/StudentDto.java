@@ -12,18 +12,14 @@ public class StudentDto {
     private String name;
     private String email;
     private String password;
-    private List<Course> courses;
-    private Map<Course, List<TestResult>> courseTestResults;
+    private Course course;
+    private List<TestResult> courseTestResults;
 
-    public StudentDto(String name, String email, String password) {                                 //for checking data for registration newStudent
+    public StudentDto(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.courses = new ArrayList<>();
-        this.courseTestResults = new HashMap<>();
     }
-
-
 
     public StudentDto(String email, String password) {        // for checking email and password for authorization
         this.email = email;
@@ -54,19 +50,19 @@ public class StudentDto {
         this.password = password;
     }
 
-    public List<Course> getCourses() {
-        return courses;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
-    public Map<Course, List<TestResult>> getCourseTestResults() {
+    public List<TestResult> getCourseTestResults() {
         return courseTestResults;
     }
 
-    public void setCourseTestResults(Map<Course, List<TestResult>> courseTestResults) {
+    public void setCourseTestResults(List<TestResult> courseTestResults) {
         this.courseTestResults = courseTestResults;
     }
 
@@ -76,7 +72,7 @@ public class StudentDto {
                 "name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", courses=" + courses +
+                ", course=" + course +
                 ", courseTestResults=" + courseTestResults +
                 '}';
     }

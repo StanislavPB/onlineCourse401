@@ -12,20 +12,16 @@ public class Student {
     private String name;
     private String email;
     private String password;
-    private List<Course> coursesByStudent;
-    private Map<Course, List<TestResult>> courseTestResults;
+    private Course courseByStudent;
+    private List<TestResult> courseTestResults;
 
-    public Student(Integer id, String name, String email, String password) {
+    public Student(Integer id, String name, String email, String password, Course courseByStudent, List<TestResult> courseTestResults) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
-        this.coursesByStudent = new ArrayList<>();
-        this.courseTestResults = new HashMap<>();
-    }
-
-    public Student(List<Course> coursesByStudent) {
-        this.coursesByStudent = coursesByStudent;
+        this.courseByStudent = courseByStudent;
+        this.courseTestResults = new ArrayList<>();
     }
 
     public Integer getId() {
@@ -60,19 +56,19 @@ public class Student {
         this.password = password;
     }
 
-    public List<Course> getCoursesByStudent() {
-        return coursesByStudent;
+    public Course getCourseByStudent() {
+        return courseByStudent;
     }
 
-    public void setCoursesByStudent(List<Course> coursesByStudent) {
-        this.coursesByStudent = coursesByStudent;
+    public void setCourseByStudent(Course courseByStudent) {
+        this.courseByStudent = courseByStudent;
     }
 
-    public Map<Course, List<TestResult>> getCourseTestResults() {
+    public List<TestResult> getCourseTestResults() {
         return courseTestResults;
     }
 
-    public void setCourseTestResults(Map<Course, List<TestResult>> courseTestResults) {
+    public void setCourseTestResults(List<TestResult> courseTestResults) {
         this.courseTestResults = courseTestResults;
     }
 
@@ -83,7 +79,7 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", coursesByStudent=" + coursesByStudent +
+                ", courseByStudent=" + courseByStudent +
                 ", courseTestResults=" + courseTestResults +
                 '}';
     }

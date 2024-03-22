@@ -13,9 +13,17 @@ public class TestResultRepository implements TestResultRepositoryInterface{
         this.testResults = new ArrayList<>();
     }
 
+
     @Override
     public TestResult add(TestResult newTestResult) {
         testResults.add(newTestResult);
         return newTestResult;
     }
+
+    @Override
+    public List<TestResult> findAll() {
+        return testResults;
+    }
+
+
 }

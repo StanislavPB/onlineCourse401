@@ -6,7 +6,7 @@ public class CourseDto {
         private String courseName;
         private String description;
         private List<String> content;
-        private List<TestControlDto> tests;
+        private TestControlDto test;
 
         // First constructor
         public CourseDto() {
@@ -20,11 +20,11 @@ public class CourseDto {
 
         // Third constructor
 
-    public CourseDto(String courseName, String description, List<String> content, List<TestControlDto> tests) {
+    public CourseDto(String courseName, String description, List<String> content, TestControlDto test) {
         this.courseName = courseName;
         this.description = description;
         this.content = content;
-        this.tests = tests;
+        this.test = test;
     }
 
 
@@ -55,11 +55,11 @@ public class CourseDto {
         this.content = content;
     }
 
-    public List<TestControlDto> getTests() {
-        return tests;
+    public TestControlDto getTest() {
+        return test;
     }
 
-    public void setTests(List<TestControlDto> tests) {
-        this.tests = tests;
+    public void setTest(TestControlDto test) {
+        this.test = test;
     }
 }

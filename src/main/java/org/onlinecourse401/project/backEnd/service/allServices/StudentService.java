@@ -4,6 +4,7 @@ import org.onlinecourse401.project.backEnd.dto.ClientResponseDto;
 import org.onlinecourse401.project.backEnd.dto.StudentDto;
 import org.onlinecourse401.project.backEnd.entity.Course;
 import org.onlinecourse401.project.backEnd.entity.Student;
+import org.onlinecourse401.project.backEnd.entity.TestResult;
 import org.onlinecourse401.project.backEnd.repositories.CourseRepositoryInterface;
 import org.onlinecourse401.project.backEnd.repositories.StudentRepositoryInterface;
 import org.onlinecourse401.project.backEnd.service.validation.ValidationRequest;
@@ -65,7 +66,9 @@ public class StudentService {
     // na vyhod: Student s obnovlennymi dannymi
 
 
+    public Student addTestResultsToStudent (Integer idStudent, List<TestResult> testResults, Integer idCourse){
 
+    }
 //Step3:
 
     //  kollekcija List<TestResult>> courseTestResults ili ??? Map<Course, List<TestResult>>

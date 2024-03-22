@@ -7,14 +7,14 @@ public class Course {
     private String courseName;
     private String description;
     private List<String> content;
-    private List<TestControl> tests;
+    private TestControl test;
 
-    public Course(Integer id, String courseName, String description, List<String> content, List<TestControl> tests) {
+    public Course(Integer id, String courseName, String description, List<String> content, TestControl test) {
         this.id = id;
         this.courseName = courseName;
         this.description = description;
         this.content = content;
-        this.tests = tests;
+        this.test = test;
     }
 
     public Integer getId() {
@@ -49,12 +49,12 @@ public class Course {
         this.content = content;
     }
 
-    public List<TestControl> getTests() {
-        return tests;
+    public TestControl getTest() {
+        return test;
     }
 
-    public void setTests(List<TestControl> tests) {
-        this.tests = tests;
+    public void setTest(TestControl test) {
+        this.test = test;
     }
 
     @Override
@@ -64,7 +64,7 @@ public class Course {
                 ", courseName='" + courseName + '\'' +
                 ", description='" + description + '\'' +
                 ", content=" + content +
-                ", tests=" + tests +
+                ", test=" + test +
                 '}';
     }
 }
