@@ -2,12 +2,15 @@ package org.onlinecourse401.project.backEnd.service.allServices;
 
 import org.onlinecourse401.project.backEnd.dto.ClientResponseDto;
 import org.onlinecourse401.project.backEnd.dto.StudentDto;
+import org.onlinecourse401.project.backEnd.entity.Course;
 import org.onlinecourse401.project.backEnd.entity.Student;
+import org.onlinecourse401.project.backEnd.repositories.CourseRepositoryInterface;
 import org.onlinecourse401.project.backEnd.repositories.StudentRepositoryInterface;
-import org.onlinecourse401.project.backEnd.service.validation.ValidationException;
 import org.onlinecourse401.project.backEnd.service.validation.ValidationRequest;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 //(add (Request: StudentDto, Response: ClientResponse), remove
 // (Request: StudentDto, Response: ClientResponse), find by id
@@ -16,10 +19,12 @@ public class StudentService {
 
     private final StudentRepositoryInterface studentRepository;
     private final ValidationRequest validationRequest;
+    private final CourseRepositoryInterface courseRepository;
 
-    public StudentService(StudentRepositoryInterface studentRepository, ValidationRequest validationRequest) {
+    public StudentService(StudentRepositoryInterface studentRepository, ValidationRequest validationRequest, CourseRepositoryInterface courseRepository) {
         this.studentRepository = studentRepository;
         this.validationRequest = validationRequest;
+        this.courseRepository = courseRepository;
     }
 
     public ClientResponseDto<Student> addNewStudent(StudentDto studentDto) {
@@ -36,11 +41,20 @@ public class StudentService {
 
 //Step1:
     //1.metod: sozdaem list / korzinu kursov,kotorye hochet projti student:
-    // public List<Course> createListCoursesByStudent(Integer courseId)
-    // Course chosenCourse = CourseService.findById(courseId);
-    // List<Course> coursesByStudent = new ArrayList();
-    // coursesByStudent.add(chosenCourse);
-    // return coursesByStudent;
+    public List<Course> addCourseToStudent(Integer idStudent, Integer idCourse) {
+        Optional<Course> courseByStudent = courseRepository.findById(idCourse);
+        Optional<Student> currentStudent = studentRepository.findById(idStudent);
+        if (currentStudent.isPresent() && courseByStudent.isPresent()) {
+            Student student = currentStudent.get();
+            List<Course> coursesByStudent = student.getCoursesByStudent();
+            coursesByStudent.add(courseByStudent.get());
+            student.setCoursesByStudent(coursesByStudent);
+            return student.getCoursesByStudent();
+        } else {
+            // Handle the case when either student or course is not found
+            return Collections.emptyList(); // or throw an exception, return null, etc.
+        }
+    }
 
 //Step2:
      //2.metod: aktualizirovanie parametrov studenta:
@@ -49,6 +63,8 @@ public class StudentService {
     // if (student.getEmail().equals(email)) {
     //  Student.setCoursesByStudent(coursesByStudent)
     // na vyhod: Student s obnovlennymi dannymi
+
+
 
 //Step3:
 

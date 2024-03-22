@@ -1,17 +1,18 @@
 package org.onlinecourse401.project.backEnd.entity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class TestResult {
     private Integer courseId;
-    private Map<Integer, Integer> studentAnswers;
+    private List<Integer> studentAnswers;
     private Integer countOfRightAnswers;
 
     public TestResult(Integer courseId, Integer currentGrade) {
         this.courseId = courseId;
-        this.studentAnswers = new HashMap<>();
+        this.studentAnswers = new ArrayList<>();
         this.countOfRightAnswers = currentGrade;
     }
 
@@ -24,28 +25,29 @@ public class TestResult {
     }
 
 
-    public Map<Integer, Integer> getStudentAnswers() {
+    public List<Integer> getStudentAnswers() {
         return studentAnswers;
     }
 
-    public void setStudentAnswers(Map<Integer, Integer> studentAnswers) {
+    public void setStudentAnswers(List<Integer> studentAnswers) {
         this.studentAnswers = studentAnswers;
     }
 
-    public Integer getCurrentGrade() {
+    public Integer getCountOfRightAnswers() {
         return countOfRightAnswers;
     }
 
-    public void setCurrentGrade(Double currentGrade) {
+    public void setCountOfRightAnswers(Integer countOfRightAnswers) {
         this.countOfRightAnswers = countOfRightAnswers;
     }
+
 
     @Override
     public String toString() {
         return "TestResult{" +
                 "courseId=" + courseId +
                 ", studentAnswers=" + studentAnswers +
-                ", currentGrade=" + countOfRightAnswers +
+                ", countOfRightAnswers=" + countOfRightAnswers +
                 '}';
     }
 }
