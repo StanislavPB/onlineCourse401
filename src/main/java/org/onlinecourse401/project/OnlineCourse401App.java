@@ -1,10 +1,7 @@
 package org.onlinecourse401.project;
 
 import org.onlinecourse401.project.backEnd.repositories.*;
-import org.onlinecourse401.project.backEnd.service.allServices.CourseService;
-import org.onlinecourse401.project.backEnd.service.allServices.QuestionService;
-import org.onlinecourse401.project.backEnd.service.allServices.StudentService;
-import org.onlinecourse401.project.backEnd.service.allServices.TestControlService;
+import org.onlinecourse401.project.backEnd.service.allServices.*;
 import org.onlinecourse401.project.backEnd.service.validation.ValidationRequest;
 import org.onlinecourse401.project.frontEnd.adminInput.UploadCourseData;
 import org.onlinecourse401.project.frontEnd.ui.UIHistory;
@@ -18,6 +15,8 @@ public class OnlineCourse401App {
         QuestionService questionService = new QuestionService(questionRepository);
         TestControlService testControlService = new TestControlService(testControlRepository);
         CourseService courseService = new CourseService(courseRepository);
+        TestResultRepositoryInterface testResultRepository = new TestResultRepository();
+        TestResultService testResultService = new TestResultService(testResultRepository);
         UploadCourseData uploadQuestionData = new UploadCourseData(courseService, questionService,testControlService);
         uploadQuestionData.inputCourseTestQuestionData();
         System.out.println();
@@ -26,9 +25,13 @@ public class OnlineCourse401App {
         StudentService studentService = new StudentService(studentRepository,validationRequest,courseRepository);
 
         //History:
-        UIHistory uiHistory = new UIHistory(courseService,studentService);
-        uiHistory.inputRegistrationData();
-        uiHistory.chooseCourseByStudent();
+        UIHistory uiHistory = new UIHistory(courseService,studentService,testResultService);
+        System.out.println("========== Student 1 ==============");
+        uiHistory.inputRegistrationDataStudent1();
+        uiHistory.chooseCourseByStudent1();
+        System.out.println("========== Student 2 ==============");
+        uiHistory.inputRegistrationDataStudent2();
+        uiHistory.chooseCourseByStudent2();
 
         System.out.println("========================USER INPUT CONSOLE========================================================0");
 

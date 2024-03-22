@@ -40,9 +40,10 @@ public class StudentService {
         }
     }
 
+
 //Step1:
     //1.metod: sozdaem list / korzinu kursov,kotorye hochet projti student:
-public Course addCourseToStudent(Integer idStudent, Integer idCourse) {
+public Student addCourseToStudent(Integer idStudent, Integer idCourse) {
     Optional<Course> optionalCourse = courseRepository.findById(idCourse);
     Optional<Student> optionalStudent = studentRepository.findById(idStudent);
 
@@ -57,20 +58,22 @@ public Course addCourseToStudent(Integer idStudent, Integer idCourse) {
         studentRepository.add(student);
 
         // Return the list of courses associated with the student
-        return student.getCourseByStudent();
+        return student;
     } else {
         // Handle the case when either student or course is not found
         throw new IllegalArgumentException("Student or Course not found");
     }
 }
 
-//Step2:
-     //2.metod: aktualizirovanie parametrov studenta:
-    // setCoursesByStudentInStudent(List<Course> coursesByStudent, String email) {
-    // for (Student student : List<Student> students)
-    // if (student.getEmail().equals(email)) {
-    //  Student.setCoursesByStudent(coursesByStudent)
-    // na vyhod: Student s obnovlennymi dannymi
+    public void printCourseDataByStudent(Student student) {
+
+            System.out.println("Course nr.: "+student.getCourseByStudent().getId());
+            System.out.println("Title: "+student.getCourseByStudent().getCourseName());
+            System.out.println("Description: "+student.getCourseByStudent().getDescription());
+            System.out.println("Content1: "+student.getCourseByStudent().getContent().get(0));
+            System.out.println("Content2: "+student.getCourseByStudent().getContent().get(1));
+
+    }
 
 /*
     public Student addTestResultsToStudent (Integer idStudent, List<TestResult> testResults, Integer idCourse){
@@ -78,7 +81,7 @@ public Course addCourseToStudent(Integer idStudent, Integer idCourse) {
         return student;
     }
 
- */
+*/
 //Step3:
 
     //  kollekcija List<TestResult>> courseTestResults ili ??? Map<Course, List<TestResult>>

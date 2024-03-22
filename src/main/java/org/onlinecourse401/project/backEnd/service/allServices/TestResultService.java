@@ -27,19 +27,19 @@ public class TestResultService {
         System.out.println("Evaluate test: " + test1Title);
 
         Question question1 = currentTest.getQuestions().get(0);
-        System.out.println("Question nr.1: " + question1);
+        System.out.println("Question nr.1: " + question1.getText());
         List<String> optionsQ1 = question1.getAnswerOptions();
-        int studentAnswerQ1 = ui.inputInteger("Please choose one answer option: " + optionsQ1);
+        int studentAnswerQ1 = ui.inputInteger("Answer options: "+"\n"+optionsQ1.get(0)+"\n"+optionsQ1.get(1)+"\n"+optionsQ1.get(2)+"\n"+"Please choose number: ");
 
        Question question2 = currentTest.getQuestions().get(1);
-       System.out.println("Question nr.2: " + question2);
+       System.out.println("Question nr.2: " + question2.getText());
        List<String> optionsQ2 = question2.getAnswerOptions();
-       int studentAnswerQ2 = ui.inputInteger("Please choose one answer option: " + optionsQ2);
+       int studentAnswerQ2 = ui.inputInteger("Answer options: "+"\n"+optionsQ2.get(0)+"\n"+optionsQ2.get(1)+"\n"+optionsQ2.get(2)+"\n"+"Please choose number: ");
 
        Question question3 = currentTest.getQuestions().get(2);
-       System.out.println("Question nr.3: " + question3);
+       System.out.println("Question nr.3: " + question3.getText());
        List<String> optionsQ3 = question3.getAnswerOptions();
-       int studentAnswerQ3 = ui.inputInteger("Please choose one answer option: " + optionsQ3);
+       int studentAnswerQ3 = ui.inputInteger("Answer options: "+"\n"+optionsQ3.get(0)+"\n"+optionsQ3.get(1)+"\n"+optionsQ3.get(2)+"\n"+"Please choose number: ");
 
         List<Integer> studentAnswers = new ArrayList<>();
         studentAnswers.add(studentAnswerQ1);
