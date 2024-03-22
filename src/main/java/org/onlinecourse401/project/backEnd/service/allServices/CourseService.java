@@ -53,6 +53,15 @@ public class CourseService {
             return new ClientResponseDto<>(250, newCourse.getCourseName(), "Course is not added.");
         }
     }
+    public List<Course> findAll() {
+      return   courseRepository.findAll();
+    }
+    public void printAllCourses() {
+        List<Course> allCourses = courseRepository.findAll();
+        for (Course course:allCourses) {
+            System.out.println("Course nr.: "+course.getId()+"\n Title: "+course.getCourseName()+"\n Description: "+course.getDescription());
+        }
+    }
 
 
 }

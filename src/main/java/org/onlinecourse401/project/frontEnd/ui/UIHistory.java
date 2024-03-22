@@ -3,12 +3,16 @@ package org.onlinecourse401.project.frontEnd.ui;
 import org.onlinecourse401.project.backEnd.dto.ClientResponseDto;
 import org.onlinecourse401.project.backEnd.dto.StudentDto;
 import org.onlinecourse401.project.backEnd.entity.Student;
+import org.onlinecourse401.project.backEnd.service.allServices.CourseService;
 import org.onlinecourse401.project.backEnd.service.allServices.StudentService;
+import org.onlinecourse401.project.frontEnd.util.UserInput;
 
-public class UI {
+public class UIHistory {
+    private final CourseService courseService;
     private final StudentService studentService;
 
-    public UI(StudentService studentService) {
+    public UIHistory(CourseService courseService, StudentService studentService) {
+        this.courseService = courseService;
         this.studentService = studentService;
     }
     public void inputRegistrationData() {
@@ -28,10 +32,11 @@ public class UI {
         System.out.println("Response code: "+student1.getResponseCode()+"; Info:"+ student1.getMessage()+ "; : "+ student1.getResponseInfo());
         System.out.println("Response code: "+student2.getResponseCode()+"; Info:"+ student2.getMessage()+ "; : "+ student2.getResponseInfo());
 
-
-
-
-
-
+    }
+    public Integer chooseCourseByStudent() {
+        System.out.println("All courses: ");
+        courseService.printAllCourses();
+        Integer id = 1;
+        return id;
     }
 }

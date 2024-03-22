@@ -9,7 +9,6 @@ import org.onlinecourse401.project.frontEnd.util.UserInput;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class TestResultService {
     UserInput ui = new UserInput();

@@ -7,7 +7,8 @@ import org.onlinecourse401.project.backEnd.service.allServices.StudentService;
 import org.onlinecourse401.project.backEnd.service.allServices.TestControlService;
 import org.onlinecourse401.project.backEnd.service.validation.ValidationRequest;
 import org.onlinecourse401.project.frontEnd.adminInput.UploadCourseData;
-import org.onlinecourse401.project.frontEnd.ui.UI;
+import org.onlinecourse401.project.frontEnd.ui.UIHistory;
+import org.onlinecourse401.project.frontEnd.ui.UserInputConsole;
 
 public class OnlineCourse401App {
     public static void main(String[] args) {
@@ -23,7 +24,17 @@ public class OnlineCourse401App {
         ValidationRequest validationRequest = new ValidationRequest();
         StudentRepositoryInterface studentRepository = new StudentRepository();
         StudentService studentService = new StudentService(studentRepository,validationRequest,courseRepository);
-        UI ui = new UI(studentService);
-        ui.inputRegistrationData();
+
+        //History:
+        UIHistory uiHistory = new UIHistory(courseService,studentService);
+        uiHistory.inputRegistrationData();
+        uiHistory.chooseCourseByStudent();
+
+        System.out.println("========================USER INPUT CONSOLE========================================================0");
+
+        //Work from console:
+        UserInputConsole uiConsole = new UserInputConsole(courseService,studentService);
+        uiConsole.inputRegistrationData();
+        uiConsole.chooseCourseByStudent();
     }
 }
