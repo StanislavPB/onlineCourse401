@@ -69,7 +69,51 @@ public class UploadCourseData {
         ClientResponseDto<String> course1 = courseService.addNewCourse(courseDto, testControl);
         System.out.println("Response code: "+course1.getResponseCode()+"; Info:"+ course1.getMessage()+ "; Course: "+ course1.getResponseInfo());
 
+        ////////////////////////////////////////////Course2//////////////////////////////////////////////////////////////
+        String textQuestion1_2 = "1. What is the main advantage of using lists in Python?";
+        String textOption1Q1_2 = "0. They allow for efficient storage of data.";
+        String textOption2Q1_2 = "1. They allow for easy iteration and manipulation of data.";
+        String textOption3Q1_2 = "2. They allow for automatic type conversion.";
+        Integer rightOptionIndexQ1_2 = 1;
+        String textQuestion2_2 = "2. What is the purpose of 'if' statement in Python?";
+        String textOption1Q2_2 = "0. To define a loop.";
+        String textOption2Q2_2 = "1. To make decisions based on conditions.";
+        String textOption3Q2_2 = "2. To define a function.";
+        Integer rightOptionIndexQ2_2 = 1;
+        String textQuestion3_2 = "3. How do you define a function in Python?";
+        String textOption1Q3_2 = "0. using the keyword 'method'.";
+        String textOption2Q3_2 = "1. using the keyword 'function'.";
+        String textOption3Q3_2 = "2. using the keyword 'define'.";
+        Integer rightOptionIndexQ3_2 = 1;
+        List<String> optionsQ1_2 = questionService.createOptionsList(textOption1Q1_2, textOption2Q1_2, textOption3Q1_2);
+        QuestionDto questionDto1_2 = questionService.createQuestionDto(textQuestion1_2, optionsQ1_2, rightOptionIndexQ1_2);
 
+        List<String> optionsQ2_2 = questionService.createOptionsList(textOption1Q2_2, textOption2Q2_2, textOption3Q2_2);
+        QuestionDto questionDto2_2 = questionService.createQuestionDto(textQuestion2_2, optionsQ2_2, rightOptionIndexQ2_2);
+
+        List<String> optionsQ3_2 = questionService.createOptionsList(textOption1Q3_2, textOption2Q3_2, textOption3Q3_2);
+        QuestionDto questionDto3_2 = questionService.createQuestionDto(textQuestion3_2, optionsQ3_2, rightOptionIndexQ3_2);
+
+        List<QuestionDto> questionDtoList_2 = questionService.createQuestionDtoList(questionDto1_2, questionDto2_2, questionDto3_2);
+        List<Question> questionList_2 = questionService.createQuestionList(questionDtoList_2);
+
+        System.out.println(questionList_2);
+
+        String testTitle_2 = "Final Exam";
+        TestControlDto testControlDto_2 = testControlService.creatTestControlDto(testTitle_2,questionDtoList_2);
+        TestControl testControl_2 = testControlService.createTestControl(testControlDto_2,questionList_2);
+        System.out.println(testControl_2);
+
+        String courseName_2 = "2. Python Basics";
+        String description_2 = "This course covers fundamental concepts of Python programming language.";
+        String content1_2 = "path/to/content2.1/file.txt";
+        String content2_2 = "path/to/content2.2/file.txt";
+        List<String> contents_2 = courseService.createContentList(content1_2,content2_2);
+        CourseDto courseDto_2 = courseService.createCourseDto(courseName_2,description_2,contents_2,testControlDto_2);
+        // Course course1 = courseService.createNewCourse(courseDto,testControlList);
+        //  System.out.println(course1);
+        ClientResponseDto<String> course2 = courseService.addNewCourse(courseDto_2, testControl_2);
+        System.out.println("Response code: "+course2.getResponseCode()+"; Info:"+ course2.getMessage()+ "; Course: "+ course2.getResponseInfo());
 
     }
 
