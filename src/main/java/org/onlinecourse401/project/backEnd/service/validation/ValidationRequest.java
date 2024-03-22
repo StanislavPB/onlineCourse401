@@ -1,5 +1,7 @@
 package org.onlinecourse401.project.backEnd.service.validation;
 
+import org.onlinecourse401.project.backEnd.dto.StudentDto;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,32 +9,44 @@ import java.util.List;
 //-переделать
 public class ValidationRequest {
 
-/*
-    public boolean checkEmail(ClientRequest request){
-        /*
-        name != null
-        name.length > 5 && < 15
 
-        description != null
-        description.length > 5 && < 30
-
-
-
+    public boolean checkEmail(StudentDto studentDto){
         List<String> errors = new ArrayList<>();
-
-        if (request.getTaskName().isBlank()) errors.add("Task name must be not null \n");
-        if ((request.getTaskName().length() < 5) || (request.getTaskName().length() > 15)) errors.add("Task name length must be between 5 and 15 letters \n");
-
-        if (request.getTaskDescription().isBlank()) errors.add("Task description must be not null \n");
-        if ((request.getTaskDescription().length() < 5) || (request.getTaskDescription().length() > 30)) errors.add("Task description length must be between 5 and 30 letters \n");
-
+        String studentEmail = studentDto.getEmail();
+        if (studentEmail.isBlank()){
+            errors.add("Email must be not null \n");
+        }
+        if ((studentEmail.length() < 5) || (studentEmail.length() > 30)) {
+            errors.add("Email length must be between 5 and 29 letters \n");
+        }
+        if(!studentEmail.contains("@")){
+            errors.add("Email must contain '@'.\n");
+        }
+        if(!studentEmail.contains(".")){
+            errors.add("Email must contain '.'.\n");
+        }
         if (!errors.isEmpty()) throw new ValidationException(errors.toString());
 
         return true;
 
     }
 
-    public boolean checkPassword(ClientRequest request){}
+    public boolean checkPassword(StudentDto studentDto){
+        List<String> errors = new ArrayList<>();
+        String studentPassword = studentDto.getPassword();
+        if (studentPassword.isBlank()){
+            errors.add("Password must be not null \n");
+        }
+        if ((studentPassword.length() < 7) || (studentPassword.length() > 11)) {
+            errors.add("Password length must be between 7 and 10 letters \n");
+        }
+        if (studentPassword.contains(" ") || studentPassword.contains(":") || studentPassword.contains("'")) {
+            errors.add("Password contain invalid characters.\n");
+        }
+        if (!errors.isEmpty()) throw new ValidationException(errors.toString());
 
-*/
+        return true;
+    }
+
+
 }

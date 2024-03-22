@@ -4,6 +4,8 @@ import org.onlinecourse401.project.backEnd.dto.ClientResponseDto;
 import org.onlinecourse401.project.backEnd.dto.StudentDto;
 import org.onlinecourse401.project.backEnd.entity.Student;
 import org.onlinecourse401.project.backEnd.repositories.StudentRepositoryInterface;
+import org.onlinecourse401.project.backEnd.service.validation.ValidationException;
+import org.onlinecourse401.project.backEnd.service.validation.ValidationRequest;
 
 import java.util.List;
 
@@ -13,19 +15,22 @@ import java.util.List;
 public class StudentService {
 
     private final StudentRepositoryInterface studentRepository;
+    private final ValidationRequest validationRequest;
 
-    public StudentService(StudentRepositoryInterface studentRepository) {
+    public StudentService(StudentRepositoryInterface studentRepository, ValidationRequest validationRequest) {
         this.studentRepository = studentRepository;
+        this.validationRequest = validationRequest;
     }
 
-    public ClientResponseDto<String> addNewStudent(StudentDto studentDto) {
-        //validation
-        Student newStudent = new Student(null, null, studentDto.getEmail(), studentDto.getPassword());
+    public ClientResponseDto<Student> addNewStudent(StudentDto studentDto) {
+        validationRequest.checkEmail(studentDto);
+        validationRequest.checkPassword(studentDto);
+        Student newStudent = new Student(null, studentDto.getName(), studentDto.getEmail(), studentDto.getPassword());
         studentRepository.add(newStudent);
         if (newStudent.getId() > 0) {
-            return new ClientResponseDto<>(200, newStudent.getEmail(), "Your account is created.");
+            return new ClientResponseDto<>(200, newStudent, "Your account is created.");
         } else {
-            return new ClientResponseDto<>(250, newStudent.getEmail(), "Your account not created. Error! Your added data are empty.");
+            return new ClientResponseDto<>(250, newStudent, "Your account not created. Error! Your added data are empty.");
         }
     }
 

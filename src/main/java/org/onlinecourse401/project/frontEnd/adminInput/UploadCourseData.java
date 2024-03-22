@@ -4,7 +4,6 @@ import org.onlinecourse401.project.backEnd.dto.ClientResponseDto;
 import org.onlinecourse401.project.backEnd.dto.CourseDto;
 import org.onlinecourse401.project.backEnd.dto.QuestionDto;
 import org.onlinecourse401.project.backEnd.dto.TestControlDto;
-import org.onlinecourse401.project.backEnd.entity.Course;
 import org.onlinecourse401.project.backEnd.entity.Question;
 import org.onlinecourse401.project.backEnd.entity.TestControl;
 import org.onlinecourse401.project.backEnd.service.allServices.CourseService;

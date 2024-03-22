@@ -18,7 +18,6 @@ import java.util.List;
 // find by id (Request: Integer courseId, Response:  ClientResponse<Course>)
 // findAll
 public class CourseService {
-    TestControlService testControlService;
     private final CourseRepositoryInterface courseRepository;
 
 

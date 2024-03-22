@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestControlService {
-    QuestionService questionService;
     private final TestControlRepositoryInterface testControlRepository;
 
 
