@@ -35,6 +35,6 @@ public class OnlineCourse401App {
         //Work from console:
         UserInputConsole uiConsole = new UserInputConsole(courseService,studentService);
         uiConsole.inputRegistrationData();
-        uiConsole.chooseCourseByStudent();
+
     }
 }
