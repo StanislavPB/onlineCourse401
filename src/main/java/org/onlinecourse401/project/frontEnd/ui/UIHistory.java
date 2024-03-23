@@ -8,6 +8,7 @@ import org.onlinecourse401.project.backEnd.service.allServices.CourseService;
 import org.onlinecourse401.project.backEnd.service.allServices.StudentService;
 import org.onlinecourse401.project.backEnd.service.allServices.TestResultService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UIHistory {
@@ -23,6 +24,7 @@ public class UIHistory {
     }
     public void inputRegistrationDataStudent1() {
 //создать try catch для обработки Exception
+
         String email1 = "ekaB@gmail.com";
         String password1 = "TestK1234!";
         String name1 = "User1";
@@ -50,13 +52,12 @@ public class UIHistory {
         System.out.println("Are you ready?");
         System.out.println("If you are not, it's not my fault :-)");
         System.out.println("Now it's time for exam :-))");
-        List<Integer> studentAnswers = testResultService.createStudentAnswers(student1Id); //metod dlja UserInputConsole
-       /* List<Integer> studentAnswers = new ArrayList<>();
+      //  List<Integer> studentAnswers = testResultService.createStudentAnswers(student1Id); //metod dlja UserInputConsole
+       List<Integer> studentAnswers = new ArrayList<>();
         studentAnswers.add(1);
         studentAnswers.add(1);
         studentAnswers.add(1);
 
-        */
         Integer currGrade = testResultService.calculateCurrentGrade(student1Id,studentAnswers);
         System.out.println("you answered "+currGrade+" questions correctly");
         TestResult testResultS1 = testResultService.createTestResult(student1Id,studentAnswers,currGrade);
@@ -101,13 +102,13 @@ public class UIHistory {
         System.out.println("Are you ready?");
         System.out.println("If you are not, it's not my fault :-)");
         System.out.println("Now it's time for exam :-))");
-        List<Integer> studentAnswers2 = testResultService.createStudentAnswers(student2Id); //metod dlja UserInputConsole
-       /* List<Integer> studentAnswers = new ArrayList<>();
-        studentAnswers.add(1);
-        studentAnswers.add(1);
-        studentAnswers.add(1);
+        //List<Integer> studentAnswers2 = testResultService.createStudentAnswers(student2Id); //metod dlja UserInputConsole
+       List<Integer> studentAnswers2 = new ArrayList<>();
+        studentAnswers2.add(1);
+        studentAnswers2.add(1);
+        studentAnswers2.add(1);
 
-        */
+
         Integer currGrade2 = testResultService.calculateCurrentGrade(student2Id,studentAnswers2);
         System.out.println("you answered "+currGrade2+" questions correctly");
         TestResult testResultS2 = testResultService.createTestResult(student2Id,studentAnswers2,currGrade2);

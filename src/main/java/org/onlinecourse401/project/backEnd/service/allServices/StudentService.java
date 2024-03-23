@@ -43,6 +43,8 @@ public class StudentService {
     }
 
 
+
+
 //Step1:
     //1.metod: sozdaem list / korzinu kursov,kotorye hochet projti student:
 public Student addCourseToStudent(Student student, Integer idCourse) {
@@ -74,7 +76,6 @@ public Student addCourseToStudent(Student student, Integer idCourse) {
             System.out.println("Content2: "+student.getCourseByStudent().getContent().get(1));
 
     }
-
 
     public Student addTestResultsToStudent(Integer studentId, List<TestResult> allTestResults){
        Student student = findStudentById(studentId);

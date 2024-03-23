@@ -36,7 +36,7 @@ public class OnlineCourse401App {
         System.out.println("========================USER INPUT CONSOLE========================================================0");
 
         //Work from console:
-        UserInputConsole uiConsole = new UserInputConsole(courseService,studentService);
+        UserInputConsole uiConsole = new UserInputConsole(courseService,studentService,testResultService);
         uiConsole.inputRegistrationData();
 
     }
