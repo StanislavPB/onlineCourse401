@@ -1,5 +1,6 @@
 package org.onlinecourse401.project.backEnd.repositories;
 
+import org.onlinecourse401.project.backEnd.entity.Course;
 import org.onlinecourse401.project.backEnd.entity.Student;
 
 import java.util.ArrayList;
@@ -20,18 +21,21 @@ public class StudentRepository implements StudentRepositoryInterface {
 
     @Override
     public Student add(Student newStudent) {
-        newStudent.setId(studentId);
+        newStudent.setId(++studentId);
+        students.add(newStudent);
+        return newStudent;
+    }
+    @Override
+    public Student update(Student studentToUpdate) {
         for (Student student : students) {
-            if (student.getId().equals(newStudent.getId())) {
-                // If there's a clash, generate a new unique ID
-                newStudent.setId(++studentId);
-                break; // Exit the loop once a unique ID is generated
+            if (student.getId().equals(studentToUpdate.getId())) {
+                Integer id = student.getId();
+                studentToUpdate.setId(id);
+            } else {
+                System.out.println("Student is not exist");
             }
         }
-        // Add the new student to the list of students
-        students.add(newStudent);
-
-        return newStudent;
+        return studentToUpdate;
     }
 
     @Override

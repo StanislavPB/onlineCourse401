@@ -64,8 +64,10 @@ public class UIHistory {
         System.out.println("you answered "+currGrade+" questions correctly");
         TestResult testResultS1 = testResultService.createTestResult(student1Id,studentAnswers,currGrade);
         System.out.println(testResultS1);
+      //  System.out.println(studentService.findStudentById(student1Id));
         List<TestResult> testResultListS1 = testResultService.addToTestResults(testResultS1);
-        Student student1Updated = studentService.addTestResultsToStudent(student1,testResultListS1);
+        System.out.println(testResultListS1);
+        Student student1Updated = studentService.addTestResultsToStudent(student1Id,testResultListS1);
         System.out.println(student1Updated);
         System.out.println(studentService.findAllStudents());
 
@@ -95,6 +97,31 @@ public class UIHistory {
         System.out.println(student);
         System.out.println("Familiarize yourself with the course: ");
         studentService.printCourseDataByStudent(student2);
+        System.out.println("Time to learn!");
+        System.out.println("...3");
+        System.out.println("...2");
+        System.out.println("...1");
+        System.out.println("Are you ready?");
+        System.out.println("If you are not, it's not my fault :-)");
+        System.out.println("Now it's time for exam :-))");
+        List<Integer> studentAnswers2 = testResultService.createStudentAnswers(student2Id); //metod dlja UserInputConsole
+       /* List<Integer> studentAnswers = new ArrayList<>();
+        studentAnswers.add(1);
+        studentAnswers.add(1);
+        studentAnswers.add(1);
+
+        */
+        Integer currGrade2 = testResultService.calculateCurrentGrade(student2Id,studentAnswers2);
+        System.out.println("you answered "+currGrade2+" questions correctly");
+        TestResult testResultS2 = testResultService.createTestResult(student2Id,studentAnswers2,currGrade2);
+        System.out.println(testResultS2);
+        //  System.out.println(studentService.findStudentById(student1Id));
+        List<TestResult> testResultListS2 = testResultService.addToTestResults(testResultS2);
+        System.out.println(testResultListS2);
+        Student student2Updated = studentService.addTestResultsToStudent(student2Id,testResultListS2);
+        System.out.println(student2Updated);
+        System.out.println(studentService.findAllStudents());
+
 
     }
 

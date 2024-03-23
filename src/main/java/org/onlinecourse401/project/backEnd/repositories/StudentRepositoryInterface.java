@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface StudentRepositoryInterface {
-    public Student add(Student newTask);
+    public Student add(Student newStudent);
 
+    public Student update(Student studentToUpdate);
     public Optional<Student> findById(Integer id);
 
     public Optional<Student> findByLastName(String LastName);

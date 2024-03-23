@@ -98,9 +98,11 @@ public class TestResultService {
                 throw new IllegalArgumentException("Student not found");
             }
         }
-        public List<TestResult> addToTestResults(TestResult testResult){
-        testResultRepository.add(testResult);
-        return testResultRepository.findAll();
-    }
+        public List<TestResult> addToTestResults(TestResult testResult) {
+
+                testResultRepository.add(testResult);
+
+            return testResultRepository.findAll();
+        }
 
 }

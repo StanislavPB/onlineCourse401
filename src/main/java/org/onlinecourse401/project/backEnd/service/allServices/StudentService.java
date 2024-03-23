@@ -56,7 +56,7 @@ public Student addCourseToStudent(Student student, Integer idCourse) {
         student.setCourseByStudent(course);
 
         // Save the updated student (assuming you have a method to save/update students)
-        studentRepository.add(student);
+        studentRepository.update(student);
 
         // Return the list of courses associated with the student
         return student;
@@ -77,16 +77,19 @@ public Student addCourseToStudent(Student student, Integer idCourse) {
     }
 
 
-    public Student addTestResultsToStudent(Student student, List<TestResult> allTestResults){
+    public Student addTestResultsToStudent(Integer studentId, List<TestResult> allTestResults){
+       Student student = findStudentById(studentId);
         List<TestResult> studentTestResults = student.getCourseTestResults();
 
         for (TestResult result : allTestResults) {
             if (result.getStudentId().equals(student.getId())) {
-                studentTestResults.add(result);
+
+                student.setCourseTestResults(allTestResults);
+            } else {
+                student.setCourseTestResults(studentTestResults);
             }
         }
-        student.setCourseTestResults(studentTestResults);
-        studentRepository.add(student);
+        studentRepository.update(student);
 
         return student;
     }
