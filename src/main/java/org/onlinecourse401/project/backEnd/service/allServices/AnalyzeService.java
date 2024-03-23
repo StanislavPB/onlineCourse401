@@ -5,8 +5,10 @@ import org.onlinecourse401.project.backEnd.repositories.StudentRepositoryInterfa
 
 import java.security.KeyStore;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class AnalyzeService {
@@ -17,7 +19,7 @@ public class AnalyzeService {
     }
 
 
-    public void bestStudentInSchool() {
+    /* public void bestStudentInSchool() {
         Optional<Student> bestStudent = studentRepository.findAll().stream()
                 .max(Comparator.comparingInt(student -> {
                     int maxScore = student.getCourseTestResults().stream()
@@ -34,6 +36,36 @@ public class AnalyzeService {
                         .mapToInt(Integer::intValue)
                         .max()
                         .orElse(0)));
+    }
+
+     */
+
+    public void bestStudentsInSchool() {
+        Optional<List<Student>> bestStudents = studentRepository.findAll().stream()
+                .collect(Collectors.groupingBy(
+                        Function.identity(),
+                        Collectors.summingInt(student -> student.getCourseTestResults().stream()
+                                .flatMap(testResult -> testResult.getCountOfRightAnswers().describeConstable().stream())
+                                .mapToInt(Integer::intValue)
+                                .sum()
+                        )
+                ))
+                .entrySet().stream()
+                .collect(Collectors.groupingBy(Map.Entry::getValue, Collectors.mapping(Map.Entry::getKey, Collectors.toList())))
+                .entrySet().stream()
+                .max(Map.Entry.comparingByKey())
+                .map(Map.Entry::getValue);
+
+        bestStudents.ifPresent(students -> {
+            System.out.println("Best student(s) in school:");
+            students.stream()
+                    .sorted(Comparator.comparing(Student::getId))
+                    .forEach(student -> System.out.println("StudentId - " + student.getId() + ", Max score: " +
+                            student.getCourseTestResults().stream()
+                                    .flatMap(testResult -> testResult.getCountOfRightAnswers().describeConstable().stream())
+                                    .mapToInt(Integer::intValue)
+                                    .sum()));
+        });
     }
     private void testPassRate(){
         // skolko studentov v shkole
