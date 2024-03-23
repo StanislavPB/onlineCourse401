@@ -10,6 +10,7 @@ import org.onlinecourse401.project.backEnd.repositories.StudentRepositoryInterfa
 import org.onlinecourse401.project.backEnd.repositories.TestResultRepositoryInterface;
 import org.onlinecourse401.project.backEnd.service.validation.ValidationRequest;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -83,8 +84,9 @@ public Student addCourseToStudent(Student student, Integer idCourse) {
 
         for (TestResult result : allTestResults) {
             if (result.getStudentId().equals(student.getId())) {
-
-                student.setCourseTestResults(allTestResults);
+                List<TestResult> oneStudentTestResults = new ArrayList<>();
+                oneStudentTestResults.add(result);
+                student.setCourseTestResults(oneStudentTestResults);
             } else {
                 student.setCourseTestResults(studentTestResults);
             }

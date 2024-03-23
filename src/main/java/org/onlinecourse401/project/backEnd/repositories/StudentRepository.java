@@ -27,13 +27,18 @@ public class StudentRepository implements StudentRepositoryInterface {
     }
     @Override
     public Student update(Student studentToUpdate) {
+        boolean found = false;
         for (Student student : students) {
             if (student.getId().equals(studentToUpdate.getId())) {
                 Integer id = student.getId();
                 studentToUpdate.setId(id);
-            } else {
-                System.out.println("Student is not exist");
+                found = true;
+                break;
+
             }
+        }
+        if (!found) {
+            System.out.println("Student is not exist");
         }
         return studentToUpdate;
     }
