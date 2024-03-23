@@ -7,11 +7,13 @@ import org.onlinecourse401.project.backEnd.dto.CourseDto;
 import org.onlinecourse401.project.backEnd.dto.TestControlDto;
 import org.onlinecourse401.project.backEnd.entity.Course;
 
+import org.onlinecourse401.project.backEnd.entity.Student;
 import org.onlinecourse401.project.backEnd.entity.TestControl;
 import org.onlinecourse401.project.backEnd.repositories.CourseRepositoryInterface;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 //addNewCourse (Request: CourseDto, Response: ClientResponse),
 // remove (Request: CourseDto, Response: ClientResponse),
@@ -51,6 +53,16 @@ public class CourseService {
             return new ClientResponseDto<>(200, newCourse.getCourseName(), "Course is added successful.");
         } else {
             return new ClientResponseDto<>(250, newCourse.getCourseName(), "Course is not added.");
+        }
+    }
+    public Course findStudentById(Integer courseId) {
+        Optional<Course> optionalCourse = courseRepository.findById(courseId);
+        if (optionalCourse.isPresent()) {
+            Course currentCourse = optionalCourse.get();
+            return currentCourse;
+        } else {
+            // Handle the case when either student or course is not found
+            throw new IllegalArgumentException("Course not found");
         }
     }
     public List<Course> findAll() {

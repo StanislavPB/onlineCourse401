@@ -41,9 +41,9 @@ public class UIHistory {
         Integer id = 1;
         System.out.println("Student 1 has chosen course nr.: "+id);
         Integer student1Id = 1;
-        Student student = studentService.findStudentById(student1Id);
-        Student student1 = studentService.addCourseToStudent(student1Id,id);
-        System.out.println(student1);
+        Student student1 = studentService.findStudentById(student1Id);
+        Student student = studentService.addCourseToStudent(student1,id);
+        System.out.println(student);
         System.out.println("Familiarize yourself with the course: ");
         studentService.printCourseDataByStudent(student1);
         System.out.println("Time to learn!");
@@ -89,7 +89,10 @@ public class UIHistory {
         courseService.printAllCourses();
         Integer id = 2;
         System.out.println("Student 2 has chosen course nr.: "+id);
-        Student student2 = studentService.addCourseToStudent(2,id);
+        Integer student2Id = 2;
+        Student student2 = studentService.findStudentById(student2Id);
+        Student student = studentService.addCourseToStudent(student2,id);
+        System.out.println(student);
         System.out.println("Familiarize yourself with the course: ");
         studentService.printCourseDataByStudent(student2);
 

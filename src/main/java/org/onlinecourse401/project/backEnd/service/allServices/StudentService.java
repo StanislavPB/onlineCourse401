@@ -46,12 +46,10 @@ public class StudentService {
 
 //Step1:
     //1.metod: sozdaem list / korzinu kursov,kotorye hochet projti student:
-public Student addCourseToStudent(Integer idStudent, Integer idCourse) {
+public Student addCourseToStudent(Student student, Integer idCourse) {
     Optional<Course> optionalCourse = courseRepository.findById(idCourse);
-    Optional<Student> optionalStudent = studentRepository.findById(idStudent);
 
-    if (optionalStudent.isPresent() && optionalCourse.isPresent()) {
-        Student student = optionalStudent.get();
+    if (optionalCourse.isPresent()) {
         Course course = optionalCourse.get();
 
         // Add the course to the student's list of courses
@@ -100,7 +98,7 @@ public Student addCourseToStudent(Integer idStudent, Integer idCourse) {
             return currentStudent;
         } else {
             // Handle the case when either student or course is not found
-            throw new IllegalArgumentException("Student or Course not found");
+            throw new IllegalArgumentException("Student not found");
         }
     }
     public List<Student> findAllStudents(){

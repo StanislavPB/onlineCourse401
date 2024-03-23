@@ -20,7 +20,15 @@ public class StudentRepository implements StudentRepositoryInterface {
 
     @Override
     public Student add(Student newStudent) {
-        newStudent.setId(++studentId);
+        newStudent.setId(studentId);
+        for (Student student : students) {
+            if (student.getId().equals(newStudent.getId())) {
+                // If there's a clash, generate a new unique ID
+                newStudent.setId(++studentId);
+                break; // Exit the loop once a unique ID is generated
+            }
+        }
+        // Add the new student to the list of students
         students.add(newStudent);
 
         return newStudent;
