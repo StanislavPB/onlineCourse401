@@ -41,7 +41,9 @@ public class UIHistory {
         Integer id = 1;
         System.out.println("Student 1 has chosen course nr.: "+id);
         Integer student1Id = 1;
+        Student student = studentService.findStudentById(student1Id);
         Student student1 = studentService.addCourseToStudent(student1Id,id);
+        System.out.println(student1);
         System.out.println("Familiarize yourself with the course: ");
         studentService.printCourseDataByStudent(student1);
         System.out.println("Time to learn!");

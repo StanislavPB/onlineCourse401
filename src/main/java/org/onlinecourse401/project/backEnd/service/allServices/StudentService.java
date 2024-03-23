@@ -92,6 +92,17 @@ public Student addCourseToStudent(Integer idStudent, Integer idCourse) {
 
         return student;
     }
+
+    public Student findStudentById(Integer idStudent) {
+        Optional<Student> optionalStudent = studentRepository.findById(idStudent);
+        if (optionalStudent.isPresent() ) {
+            Student currentStudent = optionalStudent.get();
+            return currentStudent;
+        } else {
+            // Handle the case when either student or course is not found
+            throw new IllegalArgumentException("Student or Course not found");
+        }
+    }
     public List<Student> findAllStudents(){
         return studentRepository.findAll();
     }
