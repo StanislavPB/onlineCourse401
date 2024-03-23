@@ -19,10 +19,9 @@ public class TestResultService {
         this.testResultRepository = testResultRepository;
     }
 
-
     //Step1: metod prohozhdenija testa / dachi otvetov na voprosy:
    public List<Integer> createStudentAnswers(Student student) {
-       TestControl currentTest = student.getCourseByStudent().getTest();
+        TestControl currentTest = student.getCourseByStudent().getTest();
         String test1Title = student.getCourseByStudent().getTest().getTitle();
         System.out.println("Evaluate test: " + test1Title);
 
@@ -46,7 +45,6 @@ public class TestResultService {
         studentAnswers.add(studentAnswerQ2);
         studentAnswers.add(studentAnswerQ3);
 
-
         return studentAnswers;
     }
 
@@ -66,23 +64,18 @@ public class TestResultService {
                 if (rightOptions.get(i).equals(studentAnswers.get(i))) {
                     currentGrade++; // Увеличиваем оценку на 1 за каждое совпадение
                 }
-
         }
         return currentGrade;
-
         }
-        public List<TestResult> createTestResult(Integer courseId, List<Integer> studentAnswers, Integer currentGrade){
-        TestResult testResult = new TestResult(courseId,studentAnswers,currentGrade);
+        public TestResult createTestResult(Student student, List<Integer> studentAnswers, Integer currentGrade){
+        TestResult testResult = new TestResult(student.getId(),student.getCourseByStudent().getId(),studentAnswers,currentGrade);
+        return testResult;
+        }
+        public List<TestResult> addToTestResults(TestResult testResult){
         testResultRepository.add(testResult);
-
-       return testResultRepository.findAll();
-        }
-/*
-Step3: sozdaem eksempljar klassa TestResult
-    public TestResult createTestResult(Integer courseId, Integer currentGrade, Map<Integer, Integer> studentAnswers) {
-    TestResult testResult = new TestResult(Integer courseId, Integer currentGrade,Map<Integer, Integer> studentAnswers)
-    return testResult;
+        return testResultRepository.findAll();
     }
+/*
 
 
 Step4: sozdaem collecciju iz TestResult ili Map<Course, List<TestResult>> ?????????

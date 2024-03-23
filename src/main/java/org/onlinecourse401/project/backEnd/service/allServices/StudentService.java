@@ -7,6 +7,7 @@ import org.onlinecourse401.project.backEnd.entity.Student;
 import org.onlinecourse401.project.backEnd.entity.TestResult;
 import org.onlinecourse401.project.backEnd.repositories.CourseRepositoryInterface;
 import org.onlinecourse401.project.backEnd.repositories.StudentRepositoryInterface;
+import org.onlinecourse401.project.backEnd.repositories.TestResultRepositoryInterface;
 import org.onlinecourse401.project.backEnd.service.validation.ValidationRequest;
 
 import java.util.Collections;
@@ -19,11 +20,13 @@ import java.util.Optional;
 public class StudentService {
 
     private final StudentRepositoryInterface studentRepository;
+    private final TestResultRepositoryInterface testResultRepository;
     private final ValidationRequest validationRequest;
     private final CourseRepositoryInterface courseRepository;
 
-    public StudentService(StudentRepositoryInterface studentRepository, ValidationRequest validationRequest, CourseRepositoryInterface courseRepository) {
+    public StudentService(StudentRepositoryInterface studentRepository, TestResultRepositoryInterface testResultRepository, ValidationRequest validationRequest, CourseRepositoryInterface courseRepository) {
         this.studentRepository = studentRepository;
+        this.testResultRepository = testResultRepository;
         this.validationRequest = validationRequest;
         this.courseRepository = courseRepository;
     }
@@ -75,25 +78,19 @@ public Student addCourseToStudent(Integer idStudent, Integer idCourse) {
 
     }
 
-/*
-    public Student addTestResultsToStudent (Integer idStudent, List<TestResult> testResults, Integer idCourse){
+
+    public Student addTestResultsToStudent(Student student){
+        List<TestResult> allTestResults = testResultRepository.findAll();
+        List<TestResult> studentTestResults = student.getCourseTestResults();
+
+        for (TestResult result : allTestResults) {
+            if (result.getStudentId().equals(student.getId())) {
+                studentTestResults.add(result);
+            }
+        }
+        student.setCourseTestResults(studentTestResults);
+        studentRepository.add(student);
 
         return student;
     }
-
-*/
-//Step3:
-
-    //  kollekcija List<TestResult>> courseTestResults ili ??? Map<Course, List<TestResult>>
-    //  sozdaetsja v klasse TestResultService, potom:
-
-//Step5:
-    //3. metod: aktualizirovanie parametrov studenta s kollekciej TestResult,
-    // setTestResultsToStudent(Map<Course, List<TestResult>> courseTestResults, String email) {
-    // for (Student student : List<Student> students)
-    // if (student.getEmail().equals(email)) {
-    //Map<Course, List<TestResult>> Student.getCoursesByStudent().getCourse(),courseTestResults
-    //  Student.setCourseTestResults(courseTestResults)
-
-
 }
