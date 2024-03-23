@@ -76,16 +76,18 @@ public Student addCourseToStudent(Student student, Integer idCourse) {
             System.out.println("Content2: "+student.getCourseByStudent().getContent().get(1));
 
     }
-
+/*
     public Student addTestResultsToStudent(Integer studentId, List<TestResult> allTestResults){
        Student student = findStudentById(studentId);
         List<TestResult> studentTestResults = student.getCourseTestResults();
 
         for (TestResult result : allTestResults) {
             if (result.getStudentId().equals(student.getId())) {
-                List<TestResult> oneStudentTestResults = new ArrayList<>();
-                oneStudentTestResults.add(result);
-                student.setCourseTestResults(oneStudentTestResults);
+             //   List<TestResult> oneStudentTestResults = new ArrayList<>();
+                studentTestResults.add(result);
+            //    oneStudentTestResults.add(result);
+            //    student.setCourseTestResults(oneStudentTestResults);
+                student.setCourseTestResults(studentTestResults);
             } else {
                 student.setCourseTestResults(studentTestResults);
             }
@@ -95,6 +97,25 @@ public Student addCourseToStudent(Student student, Integer idCourse) {
         return student;
     }
 
+ */
+public Student addTestResultsToStudent(Integer studentId, List<TestResult> allTestResults) {
+    Student student = findStudentById(studentId);
+    List<TestResult> studentTestResults = new ArrayList<>();
+
+    for (TestResult result : allTestResults) {
+        if (result.getStudentId().equals(student.getId())) {
+            studentTestResults.add(result);
+        }
+    }
+
+    // Set the test results for the student
+    student.setCourseTestResults(studentTestResults);
+
+    // Update the student in the repository
+    studentRepository.update(student);
+
+    return student;
+}
     public Student findStudentById(Integer idStudent) {
         Optional<Student> optionalStudent = studentRepository.findById(idStudent);
         if (optionalStudent.isPresent() ) {
