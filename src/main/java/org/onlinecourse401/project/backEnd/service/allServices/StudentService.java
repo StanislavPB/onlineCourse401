@@ -21,13 +21,11 @@ import java.util.Optional;
 public class StudentService {
 
     private final StudentRepositoryInterface studentRepository;
-    private final TestResultRepositoryInterface testResultRepository;
     private final ValidationRequest validationRequest;
     private final CourseRepositoryInterface courseRepository;
 
-    public StudentService(StudentRepositoryInterface studentRepository, TestResultRepositoryInterface testResultRepository, ValidationRequest validationRequest, CourseRepositoryInterface courseRepository) {
+    public StudentService(StudentRepositoryInterface studentRepository, ValidationRequest validationRequest, CourseRepositoryInterface courseRepository) {
         this.studentRepository = studentRepository;
-        this.testResultRepository = testResultRepository;
         this.validationRequest = validationRequest;
         this.courseRepository = courseRepository;
     }

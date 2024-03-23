@@ -18,7 +18,7 @@ public class OnlineCourse401App {
         TestResultRepositoryInterface testResultRepository = new TestResultRepository();
         ValidationRequest validationRequest = new ValidationRequest();
         StudentRepositoryInterface studentRepository = new StudentRepository();
-        StudentService studentService = new StudentService(studentRepository,testResultRepository,validationRequest,courseRepository);
+        StudentService studentService = new StudentService(studentRepository,validationRequest,courseRepository);
         TestResultService testResultService = new TestResultService(studentRepository,testResultRepository);
         UploadCourseData uploadQuestionData = new UploadCourseData(courseService, questionService,testControlService);
         uploadQuestionData.inputCourseTestQuestionData();

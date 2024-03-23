@@ -6,11 +6,8 @@ import org.onlinecourse401.project.backEnd.entity.Student;
 import org.onlinecourse401.project.backEnd.entity.TestResult;
 import org.onlinecourse401.project.backEnd.service.allServices.CourseService;
 import org.onlinecourse401.project.backEnd.service.allServices.StudentService;
-import org.onlinecourse401.project.backEnd.service.allServices.TestControlService;
 import org.onlinecourse401.project.backEnd.service.allServices.TestResultService;
-import org.onlinecourse401.project.frontEnd.util.UserInput;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UIHistory {
