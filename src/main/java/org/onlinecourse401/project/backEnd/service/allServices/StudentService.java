@@ -63,7 +63,7 @@ public Student addCourseToStudent(Student student, Integer idCourse) {
         return student;
     } else {
         // Handle the case when either student or course is not found
-        throw new IllegalArgumentException("Student or Course not found");
+        throw new IllegalArgumentException("Course not found");
     }
 }
 

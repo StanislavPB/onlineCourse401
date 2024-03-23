@@ -2,6 +2,7 @@ package org.onlinecourse401.project.frontEnd.ui;
 
 import org.onlinecourse401.project.backEnd.dto.ClientResponseDto;
 import org.onlinecourse401.project.backEnd.dto.StudentDto;
+import org.onlinecourse401.project.backEnd.entity.Course;
 import org.onlinecourse401.project.backEnd.entity.Student;
 import org.onlinecourse401.project.backEnd.entity.TestResult;
 import org.onlinecourse401.project.backEnd.repositories.TestResultRepositoryInterface;
@@ -94,11 +95,26 @@ public class UserInputConsole {
     }
 
     public Integer chooseCourseByStudent() {
-        System.out.println("All courses: ");
-        courseService.printAllCourses();
-        Integer id = ui.inputInteger("Please enter number of chosen course: ");
+        Integer id = null;
+        boolean validInput = false;
+
+        while (!validInput) {
+            System.out.println("All courses: ");
+            courseService.printAllCourses();
+
+            try {
+                id = Integer.parseInt(ui.inputText("Please enter the number of the chosen course: "));
+                validInput = true; // If parsing succeeds, set validInput to true to exit the loop
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
+                // If parsing fails, catch the exception and prompt the user to enter a valid integer
+            }
+        }
         return id;
     }
+
+
+
 
 
 

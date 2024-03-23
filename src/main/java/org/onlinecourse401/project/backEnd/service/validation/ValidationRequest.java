@@ -1,6 +1,7 @@
 package org.onlinecourse401.project.backEnd.service.validation;
 
 import org.onlinecourse401.project.backEnd.dto.StudentDto;
+import org.onlinecourse401.project.frontEnd.util.UserInput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +47,15 @@ public class ValidationRequest {
         if (!errors.isEmpty()) throw new ValidationException(errors.toString());
 
         return true;
+    }
+    public int inputIntegerWithValidation(UserInput ui, String prompt) {
+        while (true) {
+            try {
+                return Integer.parseInt(ui.inputText(prompt));
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
+            }
+        }
     }
 
 
