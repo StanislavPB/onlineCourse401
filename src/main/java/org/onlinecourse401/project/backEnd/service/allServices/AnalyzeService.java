@@ -17,7 +17,7 @@ public class AnalyzeService {
     }
 
 
-    private void bestStudentInSchool() {
+    public void bestStudentInSchool() {
         Optional<Student> bestStudent = studentRepository.findAll().stream()
                 .max(Comparator.comparingInt(student -> {
                     int maxScore = student.getCourseTestResults().stream()
@@ -28,7 +28,7 @@ public class AnalyzeService {
                     return maxScore;
                 }));
 
-        bestStudent.ifPresent(student -> System.out.println("Best student: StudentId - " + student.getId() + ", Max score: " +
+        bestStudent.ifPresent(student -> System.out.println("Best student in school: StudentId - " + student.getId() + ", Max score: " +
                 student.getCourseTestResults().stream()
                         .flatMap(testResult -> testResult.getCountOfRightAnswers().describeConstable().stream())
                         .mapToInt(Integer::intValue)

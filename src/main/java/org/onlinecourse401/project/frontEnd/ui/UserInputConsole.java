@@ -6,6 +6,7 @@ import org.onlinecourse401.project.backEnd.entity.Course;
 import org.onlinecourse401.project.backEnd.entity.Student;
 import org.onlinecourse401.project.backEnd.entity.TestResult;
 import org.onlinecourse401.project.backEnd.repositories.TestResultRepositoryInterface;
+import org.onlinecourse401.project.backEnd.service.allServices.AnalyzeService;
 import org.onlinecourse401.project.backEnd.service.allServices.CourseService;
 import org.onlinecourse401.project.backEnd.service.allServices.StudentService;
 import org.onlinecourse401.project.backEnd.service.allServices.TestResultService;
@@ -18,11 +19,13 @@ public class UserInputConsole {
     private final CourseService courseService;
     private final StudentService studentService;
     private final TestResultService testResultService;
+    private final AnalyzeService analyzeService;
 
-    public UserInputConsole(CourseService courseService, StudentService studentService, TestResultService testResultService) {
+    public UserInputConsole(CourseService courseService, StudentService studentService, TestResultService testResultService, AnalyzeService analyzeService) {
         this.courseService = courseService;
         this.studentService = studentService;
         this.testResultService = testResultService;
+        this.analyzeService = analyzeService;
     }
 
     public void inputRegistrationData() {
@@ -82,7 +85,9 @@ public class UserInputConsole {
                 System.out.println(student1Updated);
                 // Print all students
                 System.out.println(studentService.findAllStudents());
-
+                System.out.println("===================== FOR ADMIN =================");
+                analyzeService.bestStudentInSchool();
+                System.out.println("===================== FOR ADMIN =================");
                 // Ask if the user wants to select a new course
                 String input = ui.inputText("Do you want to select a new course? (Type 'ok' to select a new course or anything else to exit): ");
                 wantToSelectNewCourse = input.trim().equalsIgnoreCase("ok");
@@ -92,6 +97,7 @@ public class UserInputConsole {
             System.out.println("An unexpected error occurred: " + e.getMessage());
 
         }
+
     }
 
     public Integer chooseCourseByStudent() {

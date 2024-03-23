@@ -21,6 +21,7 @@ public class OnlineCourse401App {
         StudentService studentService = new StudentService(studentRepository,validationRequest,courseRepository);
         TestResultService testResultService = new TestResultService(studentRepository,testResultRepository,validationRequest);
         UploadCourseData uploadQuestionData = new UploadCourseData(courseService, questionService,testControlService);
+        AnalyzeService analyzeService = new AnalyzeService(studentRepository);
         uploadQuestionData.inputCourseTestQuestionData();
         System.out.println();
 
@@ -36,7 +37,7 @@ public class OnlineCourse401App {
         System.out.println("========================USER INPUT CONSOLE========================================================0");
 
         //Work from console:
-        UserInputConsole uiConsole = new UserInputConsole(courseService,studentService,testResultService);
+        UserInputConsole uiConsole = new UserInputConsole(courseService,studentService,testResultService,analyzeService);
         uiConsole.inputRegistrationData();
 
     }
