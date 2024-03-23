@@ -3,6 +3,7 @@ package org.onlinecourse401.project.frontEnd.ui;
 import org.onlinecourse401.project.backEnd.dto.ClientResponseDto;
 import org.onlinecourse401.project.backEnd.dto.StudentDto;
 import org.onlinecourse401.project.backEnd.entity.Student;
+import org.onlinecourse401.project.backEnd.entity.TestResult;
 import org.onlinecourse401.project.backEnd.service.allServices.CourseService;
 import org.onlinecourse401.project.backEnd.service.allServices.StudentService;
 import org.onlinecourse401.project.backEnd.service.allServices.TestControlService;
@@ -39,7 +40,8 @@ public class UIHistory {
         courseService.printAllCourses();
         Integer id = 1;
         System.out.println("Student 1 has chosen course nr.: "+id);
-        Student student1 = studentService.addCourseToStudent(1,id);
+        Integer student1Id = 1;
+        Student student1 = studentService.addCourseToStudent(student1Id,id);
         System.out.println("Familiarize yourself with the course: ");
         studentService.printCourseDataByStudent(student1);
         System.out.println("Time to learn!");
@@ -49,9 +51,21 @@ public class UIHistory {
         System.out.println("Are you ready?");
         System.out.println("If you are not, it's not my fault :-)");
         System.out.println("Now it's time for exam :-))");
-       // testResultService.createStudentAnswers(student1); //metod dlja UserInputConsole
-        List<Integer> studentAnswers = new ArrayList<>();
+        List<Integer> studentAnswers = testResultService.createStudentAnswers(student1Id); //metod dlja UserInputConsole
+       /* List<Integer> studentAnswers = new ArrayList<>();
+        studentAnswers.add(1);
+        studentAnswers.add(1);
+        studentAnswers.add(1);
 
+        */
+        Integer currGrade = testResultService.calculateCurrentGrade(student1Id,studentAnswers);
+        System.out.println("you answered "+currGrade+" questions correctly");
+        TestResult testResultS1 = testResultService.createTestResult(student1Id,studentAnswers,currGrade);
+        System.out.println(testResultS1);
+        List<TestResult> testResultListS1 = testResultService.addToTestResults(testResultS1);
+        Student student1Updated = studentService.addTestResultsToStudent(student1,testResultListS1);
+        System.out.println(student1Updated);
+        System.out.println(studentService.findAllStudents());
 
     }
   //  public void evaluateTestByStudent1()

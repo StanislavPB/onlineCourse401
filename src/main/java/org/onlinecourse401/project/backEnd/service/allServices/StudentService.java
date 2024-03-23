@@ -79,8 +79,7 @@ public Student addCourseToStudent(Integer idStudent, Integer idCourse) {
     }
 
 
-    public Student addTestResultsToStudent(Student student){
-        List<TestResult> allTestResults = testResultRepository.findAll();
+    public Student addTestResultsToStudent(Student student, List<TestResult> allTestResults){
         List<TestResult> studentTestResults = student.getCourseTestResults();
 
         for (TestResult result : allTestResults) {
@@ -92,5 +91,8 @@ public Student addCourseToStudent(Integer idStudent, Integer idCourse) {
         studentRepository.add(student);
 
         return student;
+    }
+    public List<Student> findAllStudents(){
+        return studentRepository.findAll();
     }
 }

@@ -16,13 +16,13 @@ public class OnlineCourse401App {
         TestControlService testControlService = new TestControlService(testControlRepository);
         CourseService courseService = new CourseService(courseRepository);
         TestResultRepositoryInterface testResultRepository = new TestResultRepository();
-        TestResultService testResultService = new TestResultService(testResultRepository);
+        ValidationRequest validationRequest = new ValidationRequest();
+        StudentRepositoryInterface studentRepository = new StudentRepository();
+        StudentService studentService = new StudentService(studentRepository,testResultRepository,validationRequest,courseRepository);
+        TestResultService testResultService = new TestResultService(studentRepository,testResultRepository);
         UploadCourseData uploadQuestionData = new UploadCourseData(courseService, questionService,testControlService);
         uploadQuestionData.inputCourseTestQuestionData();
         System.out.println();
-        ValidationRequest validationRequest = new ValidationRequest();
-        StudentRepositoryInterface studentRepository = new StudentRepository();
-        StudentService studentService = new StudentService(studentRepository,validationRequest,courseRepository);
 
         //History:
         UIHistory uiHistory = new UIHistory(courseService,studentService,testResultService);

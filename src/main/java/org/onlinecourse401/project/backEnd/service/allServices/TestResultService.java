@@ -4,23 +4,31 @@ import org.onlinecourse401.project.backEnd.entity.Question;
 import org.onlinecourse401.project.backEnd.entity.Student;
 import org.onlinecourse401.project.backEnd.entity.TestControl;
 import org.onlinecourse401.project.backEnd.entity.TestResult;
+import org.onlinecourse401.project.backEnd.repositories.StudentRepositoryInterface;
 import org.onlinecourse401.project.backEnd.repositories.TestResultRepositoryInterface;
 import org.onlinecourse401.project.frontEnd.util.UserInput;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class TestResultService {
     UserInput ui = new UserInput();
+    private final StudentRepositoryInterface studentRepository;
 
     private final TestResultRepositoryInterface testResultRepository;
 
-    public TestResultService(TestResultRepositoryInterface testResultRepository) {
+    public TestResultService(StudentRepositoryInterface studentRepository, TestResultRepositoryInterface testResultRepository) {
+        this.studentRepository = studentRepository;
         this.testResultRepository = testResultRepository;
     }
 
     //Step1: metod prohozhdenija testa / dachi otvetov na voprosy:
-   public List<Integer> createStudentAnswers(Student student) {
+   public List<Integer> createStudentAnswers(Integer idStudent) {
+       Optional<Student> optionalStudent = studentRepository.findById(idStudent);
+       if (optionalStudent.isPresent()) {
+        Student student = optionalStudent.get();
+
         TestControl currentTest = student.getCourseByStudent().getTest();
         String test1Title = student.getCourseByStudent().getTest().getTitle();
         System.out.println("Evaluate test: " + test1Title);
@@ -46,10 +54,18 @@ public class TestResultService {
         studentAnswers.add(studentAnswerQ3);
 
         return studentAnswers;
+       } else {
+           // Handle the case when either student or course is not found
+           throw new IllegalArgumentException("Student not found");
+       }
     }
 
 //Step2: metod ocenki otvetov
-    public Integer calculateCurrentGrade(Student student, List<Integer> studentAnswers) {
+    public Integer calculateCurrentGrade(Integer idStudent, List<Integer> studentAnswers) {
+        Optional<Student> optionalStudent = studentRepository.findById(idStudent);
+        if (optionalStudent.isPresent()) {
+            Student student = optionalStudent.get();
+
         Integer rightOptionQ1 = student.getCourseByStudent().getTest().getQuestions().get(0).getCorrectAnswer();
         Integer rightOptionQ2 = student.getCourseByStudent().getTest().getQuestions().get(1).getCorrectAnswer();
         Integer rightOptionQ3 = student.getCourseByStudent().getTest().getQuestions().get(2).getCorrectAnswer();
@@ -66,31 +82,25 @@ public class TestResultService {
                 }
         }
         return currentGrade;
+        } else {
+            // Handle the case when either student or course is not found
+            throw new IllegalArgumentException("Student not found");
         }
-        public TestResult createTestResult(Student student, List<Integer> studentAnswers, Integer currentGrade){
+        }
+        public TestResult createTestResult(Integer idStudent, List<Integer> studentAnswers, Integer currentGrade){
+            Optional<Student> optionalStudent = studentRepository.findById(idStudent);
+            if (optionalStudent.isPresent()) {
+                Student student = optionalStudent.get();
         TestResult testResult = new TestResult(student.getId(),student.getCourseByStudent().getId(),studentAnswers,currentGrade);
         return testResult;
+            } else {
+                // Handle the case when either student or course is not found
+                throw new IllegalArgumentException("Student not found");
+            }
         }
         public List<TestResult> addToTestResults(TestResult testResult){
         testResultRepository.add(testResult);
         return testResultRepository.findAll();
     }
-/*
-
-
-Step4: sozdaem collecciju iz TestResult ili Map<Course, List<TestResult>> ?????????
-    List<TestResult>> courseTestResults
-    metod:
-    public Map<Course, List<TestResult>> createTestResults(List<Student> students){
-    for (Student student : List<Student> students) {
-    Course key = student.getCoursesByStudent().getCourse()
-
-    }
-
-
-
-    }
-
- */
 
 }
