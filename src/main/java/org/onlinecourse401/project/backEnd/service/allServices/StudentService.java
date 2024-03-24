@@ -129,4 +129,8 @@ public Student addTestResultsToStudent(Integer studentId, List<TestResult> allTe
     public List<Student> findAllStudents(){
         return studentRepository.findAll();
     }
+
+    public void printAllStudents() {
+        findAllStudents().forEach(student -> System.out.println(student));
+    }
 }

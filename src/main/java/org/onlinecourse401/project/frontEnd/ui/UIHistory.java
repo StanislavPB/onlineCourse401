@@ -119,7 +119,7 @@ public class UIHistory {
         Student student2Updated = studentService.addTestResultsToStudent(student2Id,testResultListS2);
         System.out.println(student2Updated);
         System.out.println("--------- all students history--------- ");
-        System.out.println(studentService.findAllStudents());
+        studentService.printAllStudents();
 
 
     }

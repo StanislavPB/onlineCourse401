@@ -55,7 +55,7 @@ public class CourseService {
             return new ClientResponseDto<>(250, newCourse.getCourseName(), "Course is not added.");
         }
     }
-    public Course findStudentById(Integer courseId) {
+    public Course findCourseById(Integer courseId) {
         Optional<Course> optionalCourse = courseRepository.findById(courseId);
         if (optionalCourse.isPresent()) {
             Course currentCourse = optionalCourse.get();
