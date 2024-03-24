@@ -87,6 +87,8 @@ public class UserInputConsole {
                 System.out.println(studentService.findAllStudents());
                 System.out.println("===================== FOR ADMIN =================");
                 analyzeService.bestStudentsInSchool();
+                analyzeService.countAllStudentsInSchlool();
+                analyzeService.testPassRate();
                 System.out.println("===================== FOR ADMIN =================");
                 // Ask if the user wants to select a new course
                 String input = ui.inputText("Do you want to select a new course? (Type 'ok' to select a new course or anything else to exit): ");
