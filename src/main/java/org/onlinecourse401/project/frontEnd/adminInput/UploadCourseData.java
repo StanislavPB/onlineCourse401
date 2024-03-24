@@ -23,6 +23,7 @@ public class UploadCourseData {
         this.testControlService = testControlService;
     }
     public void inputCourseTestQuestionData() {
+        System.out.println("--------------- Course 1--------------- ");
 
         String textQuestion1 = "1. What is the main advantage of using interfaces in Java?";
         String textOption1Q1 = "0. They allow for multiple inheritance.";
@@ -70,6 +71,7 @@ public class UploadCourseData {
         System.out.println("Response code: "+course1.getResponseCode()+"; Info:"+ course1.getMessage()+ "; Course: "+ course1.getResponseInfo());
 
         ////////////////////////////////////////////Course2//////////////////////////////////////////////////////////////
+        System.out.println("--------------- Course 2--------------- ");
         String textQuestion1_2 = "1. What is the main advantage of using lists in Python?";
         String textOption1Q1_2 = "0. They allow for efficient storage of data.";
         String textOption2Q1_2 = "1. They allow for easy iteration and manipulation of data.";
@@ -114,6 +116,8 @@ public class UploadCourseData {
         //  System.out.println(course1);
         ClientResponseDto<String> course2 = courseService.addNewCourse(courseDto_2, testControl_2);
         System.out.println("Response code: "+course2.getResponseCode()+"; Info:"+ course2.getMessage()+ "; Course: "+ course2.getResponseInfo());
+        System.out.println("--------- all courses history---------");
+        courseService.printAllCoursesFullInfo();
 
     }
 

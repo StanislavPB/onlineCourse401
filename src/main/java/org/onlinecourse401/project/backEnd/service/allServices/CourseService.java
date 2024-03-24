@@ -75,6 +75,10 @@ public class CourseService {
         }
     }
 
+    public void printAllCoursesFullInfo() {
+        findAll().forEach(course -> System.out.println(course));
+    }
+
 
 }
 /*

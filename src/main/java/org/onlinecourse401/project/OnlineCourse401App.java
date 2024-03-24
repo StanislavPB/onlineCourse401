@@ -23,11 +23,11 @@ public class OnlineCourse401App {
         StudentRepositoryInterface studentRepository = new StudentRepository();
         StudentService studentService = new StudentService(studentRepository,validationRequest,courseRepository);
         TestResultService testResultService = new TestResultService(studentRepository,testResultRepository,validationRequest);
-        UploadCourseData uploadQuestionData = new UploadCourseData(courseService, questionService,testControlService);
+        UploadCourseData uploadCourseData = new UploadCourseData(courseService, questionService,testControlService);
         AnalyzeService analyzeService = new AnalyzeService(studentRepository);
 
         System.out.println("====================  COURSES HISTORY ===================");
-        uploadQuestionData.inputCourseTestQuestionData();
+        uploadCourseData.inputCourseTestQuestionData();
         System.out.println();
 
         //History:
