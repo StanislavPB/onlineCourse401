@@ -3,12 +3,10 @@ package org.onlinecourse401.project;
 import org.onlinecourse401.project.backEnd.repositories.*;
 import org.onlinecourse401.project.backEnd.service.allServices.*;
 import org.onlinecourse401.project.backEnd.service.validation.ValidationRequest;
-import org.onlinecourse401.project.frontEnd.adminInput.UploadCourseData;
-import org.onlinecourse401.project.frontEnd.ui.UIHistory;
-import org.onlinecourse401.project.frontEnd.ui.UserInputConsole;
+import org.onlinecourse401.project.frontEnd.historyData.UploadCourseData;
+import org.onlinecourse401.project.frontEnd.historyData.UIHistory;
+import org.onlinecourse401.project.frontEnd.ui.studentMenu.UserInputConsole;
 import org.onlinecourse401.project.frontEnd.ui.studentMenu.StudentUserMenu;
-
-import java.util.Scanner;
 
 public class OnlineCourse401App {
     public static void main(String[] args) {

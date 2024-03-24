@@ -1,7 +1,5 @@
 package org.onlinecourse401.project.frontEnd.ui.studentMenu;
 
-import org.onlinecourse401.project.frontEnd.ui.UserInputConsole;
-
 public class StudentUserMenu {
 
     private final UserInputConsole userInputConsole;

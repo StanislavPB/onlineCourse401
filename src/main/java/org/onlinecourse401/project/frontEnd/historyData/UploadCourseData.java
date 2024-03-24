@@ -1,4 +1,4 @@
-package org.onlinecourse401.project.frontEnd.adminInput;
+package org.onlinecourse401.project.frontEnd.historyData;
 
 import org.onlinecourse401.project.backEnd.dto.ClientResponseDto;
 import org.onlinecourse401.project.backEnd.dto.CourseDto;
