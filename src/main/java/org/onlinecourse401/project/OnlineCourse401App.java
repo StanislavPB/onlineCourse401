@@ -29,7 +29,7 @@ public class OnlineCourse401App {
         System.out.println();
 
         //History:
-       /* UIHistory uiHistory = new UIHistory(courseService,studentService,testResultService);
+        UIHistory uiHistory = new UIHistory(courseService,studentService,testResultService);
         System.out.println("========== Student 1 ==============");
         uiHistory.inputRegistrationDataStudent1();
         uiHistory.chooseCourseByStudent1();
@@ -37,13 +37,15 @@ public class OnlineCourse401App {
         uiHistory.inputRegistrationDataStudent2();
         uiHistory.chooseCourseByStudent2();
 
-        System.out.println("========================USER INPUT CONSOLE========================================================0");
+        /*System.out.println("========================USER INPUT CONSOLE========================================================0");
 
         //Work from console:
         UserInputConsole uiConsole = new UserInputConsole(courseService,studentService,testResultService,analyzeService);
         uiConsole.inputRegistrationData();
 
-        */
+
+         */
+
 
         System.out.println("========================StudentUserMenu========================================================0");
         UserInputConsole uiConsole = new UserInputConsole(courseService,studentService,testResultService,analyzeService);
