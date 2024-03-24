@@ -25,7 +25,36 @@ public class TestResultService {
         this.testResultRepository = testResultRepository;
         this.validationRequest = validationRequest;
     }
+    public List<Integer> createStudentAnswers(Integer idStudent) {
+        Optional<Student> optionalStudent = studentRepository.findById(idStudent);
+        if (optionalStudent.isPresent()) {
+            Student student = optionalStudent.get();
+            TestControl currentTest = student.getCourseByStudent().getTest();
+            String testTitle = currentTest.getTitle();
+            System.out.println("---------EVALUATE TEST: ---------");
+            System.out.println(testTitle);
 
+            List<Integer> studentAnswers = new ArrayList<>();
+            int numQuestions = currentTest.getQuestions().size();
+
+            // Определение диапазона вопросов в зависимости от курса и создание ответов студента
+            int startQuestionIndex = (student.getCourseByStudent().getId() - 1) * 3;
+            int endQuestionIndex = startQuestionIndex + 3;
+            for (int i = startQuestionIndex; i < endQuestionIndex; i++) {
+                Question question = currentTest.getQuestions().get(i);
+                System.out.println("Question nr." + (i - startQuestionIndex + 1) + ": " + question.getText());
+                List<String> options = question.getAnswerOptions();
+                int studentAnswer = validationRequest.inputIntegerWithValidation(ui, "Answer options: " + "\n" + options.get(0) + "\n" + options.get(1) + "\n" + options.get(2) + "\n" + "Please choose number: ");
+                studentAnswers.add(studentAnswer);
+            }
+
+            return studentAnswers;
+        } else {
+            // Handle the case when either student or course is not found
+            throw new IllegalArgumentException("Student not found");
+        }
+    }
+/*
 public List<Integer> createStudentAnswers(Integer idStudent) {
     Optional<Student> optionalStudent = studentRepository.findById(idStudent);
     if (optionalStudent.isPresent()) {
@@ -66,6 +95,9 @@ public List<Integer> createStudentAnswers(Integer idStudent) {
         throw new IllegalArgumentException("Student not found");
     }
 }
+
+ */
+
 
 
 //Step2: metod ocenki otvetov
