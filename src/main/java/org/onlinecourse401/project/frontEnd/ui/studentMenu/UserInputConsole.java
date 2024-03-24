@@ -100,7 +100,7 @@ public class UserInputConsole {
                 System.out.println();
                 List<Integer> studentAnswers = testResultService.createStudentAnswers(student1Id);
                 Integer currGrade = testResultService.calculateCurrentGrade(student1Id, studentAnswers);
-                System.out.println("you answered " + currGrade + " questions correctly");
+                System.out.println("you answered " + currGrade + " of the 3 questions correctly");
                 TestResult testResultS1 = testResultService.createTestResult(student1Id, studentAnswers, currGrade);
                 System.out.println(testResultS1);
                 //  System.out.println(studentService.findStudentById(student1Id));
