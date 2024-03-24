@@ -35,8 +35,6 @@ public class TestResultService {
             System.out.println(testTitle);
 
             List<Integer> studentAnswers = new ArrayList<>();
-            int numQuestions = currentTest.getQuestions().size();
-
             // Определение диапазона вопросов в зависимости от курса и создание ответов студента
             int startQuestionIndex = (student.getCourseByStudent().getId() - 1) * 3;
             int endQuestionIndex = startQuestionIndex + 3;
@@ -60,8 +58,6 @@ public class TestResultService {
         if (optionalStudent.isPresent()) {
             Student student = optionalStudent.get();
             List<Integer> rightOptions = new ArrayList<>();
-          //  int numQuestions = currentTest.getQuestions().size();
-
             // Определение диапазона вопросов в зависимости от курса и создание ответов студента
             int startQuestionIndex = (student.getCourseByStudent().getId() - 1) * 3;
             int endQuestionIndex = startQuestionIndex + 3;
@@ -81,36 +77,7 @@ public class TestResultService {
             throw new IllegalArgumentException("Student not found");
         }
     }
-    /*
-    //Step2: metod ocenki otvetov
-    public Integer calculateCurrentGrade(Integer idStudent, List<Integer> studentAnswers) {
-        Optional<Student> optionalStudent = studentRepository.findById(idStudent);
-        if (optionalStudent.isPresent()) {
-            Student student = optionalStudent.get();
 
-            Integer rightOptionQ1 = student.getCourseByStudent().getTest().getQuestions().get(0).getCorrectAnswer();
-            Integer rightOptionQ2 = student.getCourseByStudent().getTest().getQuestions().get(1).getCorrectAnswer();
-            Integer rightOptionQ3 = student.getCourseByStudent().getTest().getQuestions().get(2).getCorrectAnswer();
-
-            List<Integer> rightOptions = new ArrayList<>();
-            rightOptions.add(rightOptionQ1);
-            rightOptions.add(rightOptionQ2);
-            rightOptions.add(rightOptionQ3);
-
-            Integer currentGrade = 0;
-            for (int i = 0; i < rightOptions.size(); i++) {
-                if (rightOptions.get(i).equals(studentAnswers.get(i))) {
-                    currentGrade++; // Увеличиваем оценку на 1 за каждое совпадение
-                }
-            }
-            return currentGrade;
-        } else {
-            // Handle the case when either student or course is not found
-            throw new IllegalArgumentException("Student not found");
-        }
-    }
-
-     */
         public TestResult createTestResult(Integer idStudent, List<Integer> studentAnswers, Integer currentGrade){
             Optional<Student> optionalStudent = studentRepository.findById(idStudent);
             if (optionalStudent.isPresent()) {
