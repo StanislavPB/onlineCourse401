@@ -12,6 +12,8 @@ import java.util.Scanner;
 
 public class OnlineCourse401App {
     public static void main(String[] args) {
+
+        // создаем основные классы для работы сервиса
         QuestionRepositoryInterface questionRepository = new QuestionRepository();
         TestControlRepositoryInterface testControlRepository = new TestControlRepository();
         CourseRepositoryInterface courseRepository = new CourseRepository();
@@ -23,18 +25,15 @@ public class OnlineCourse401App {
         StudentRepositoryInterface studentRepository = new StudentRepository();
         StudentService studentService = new StudentService(studentRepository,validationRequest,courseRepository);
         TestResultService testResultService = new TestResultService(studentRepository,testResultRepository,validationRequest);
-        UploadCourseData uploadCourseData = new UploadCourseData(courseService, questionService,testControlService);
         AnalyzeService analyzeService = new AnalyzeService(studentRepository);
 
         System.out.println("====================  COURSES HISTORY ===================");
+        UploadCourseData uploadCourseData = new UploadCourseData(courseService, questionService,testControlService);
         uploadCourseData.inputCourseTestQuestionData();
         System.out.println();
 
-        //History:
-        UIHistory uiHistory = new UIHistory(courseService,studentService,testResultService);
-
-        System.out.println();
         System.out.println("====================  STUDENTS HISTORY ===================");
+        UIHistory uiHistory = new UIHistory(courseService,studentService,testResultService);
         System.out.println("--------------- Student 1--------------- ");
         uiHistory.inputRegistrationDataStudent1();
         uiHistory.chooseCourseByStudent1();
@@ -45,6 +44,7 @@ public class OnlineCourse401App {
 
         System.out.println("======================== STUDENT USER MENU ========================================================0");
         UserInputConsole uiConsole = new UserInputConsole(courseService,studentService,testResultService,analyzeService);
+
         StudentUserMenu studentUserMenu = new StudentUserMenu(uiConsole);
         studentUserMenu.displayMenu();
 
