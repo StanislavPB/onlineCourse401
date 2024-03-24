@@ -1,37 +1,38 @@
 package org.onlinecourse401.project.frontEnd.ui.studentMenu;
 
-import java.util.List;
-import java.util.Scanner;
+import org.onlinecourse401.project.frontEnd.ui.UserInputConsole;
 
 public class StudentUserMenu {
-    private final List<StudentMenuCommand> commands;
 
-    public StudentUserMenu(List<StudentMenuCommand> commands) {
-        this.commands = commands;
+    private final UserInputConsole userInputConsole;
+
+    public StudentUserMenu(UserInputConsole userInputConsole) {
+        this.userInputConsole = userInputConsole;
     }
 
-    public void startUserMenu() {
-        Scanner scanner = new Scanner(System.in);
-        boolean exitRequested = false;
+    public void displayMenu() {
+        boolean continueExecution = true;
 
-        while (!exitRequested) {
-            for (int i = 0; i < commands.size(); i++) {
-                System.out.println(i + ". " + commands.get(i).getMenuName());
+        while (continueExecution) {
+            System.out.println("Welcome to 'Online Course 401':)");
+            System.out.println("0. Start");
+            System.out.println("1. Exit");
+
+            int choice = userInputConsole.getInputChoice();
+
+            switch (choice) {
+                case 0:
+                    userInputConsole.inputRegistrationData();
+                    break;
+                case 1:
+                    continueExecution = false;
+                    System.out.println("Exiting...");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");
             }
-            System.out.println("Make your choice: ");
-
-            int userInput = Integer.parseInt(scanner.next());
-
-            if (userInput < 0 || userInput >= commands.size()) {
-                System.out.println("Invalid option, please try again.");
-            }
-            else {
-                StudentMenuCommand command = commands.get(userInput);
-                command.executeCommand();
-                exitRequested = command.shouldExit();
-            }
-
-
         }
     }
+
+
 }

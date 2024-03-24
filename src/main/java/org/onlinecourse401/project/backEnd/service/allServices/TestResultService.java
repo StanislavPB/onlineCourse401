@@ -34,7 +34,8 @@ public List<Integer> createStudentAnswers(Integer idStudent) {
 
         TestControl currentTest = student.getCourseByStudent().getTest();
         String testTitle = currentTest.getTitle();
-        System.out.println("Evaluate test: " + testTitle);
+        System.out.println("---------EVALUATE TEST: ---------");
+        System.out.println(testTitle);
 
         // Prompt for answer to question 1
         Question question1 = currentTest.getQuestions().get(0);

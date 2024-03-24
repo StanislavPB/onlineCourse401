@@ -13,6 +13,7 @@ import org.onlinecourse401.project.backEnd.service.allServices.TestResultService
 import org.onlinecourse401.project.frontEnd.util.UserInput;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class UserInputConsole {
     UserInput ui = new UserInput();
@@ -20,12 +21,32 @@ public class UserInputConsole {
     private final StudentService studentService;
     private final TestResultService testResultService;
     private final AnalyzeService analyzeService;
+    private final Scanner scanner;
 
     public UserInputConsole(CourseService courseService, StudentService studentService, TestResultService testResultService, AnalyzeService analyzeService) {
         this.courseService = courseService;
         this.studentService = studentService;
         this.testResultService = testResultService;
         this.analyzeService = analyzeService;
+        this.scanner = new Scanner(System.in);
+    }
+    public int getInputChoice() {
+        int choice;
+        while (true) {
+            try {
+                System.out.print("Enter your choice: ");
+                choice = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number.");
+            }
+        }
+        return choice;
+    }
+
+    public String inputText(String message) {
+        System.out.print(message);
+        return scanner.nextLine();
     }
 
     public void inputRegistrationData() {
@@ -35,6 +56,8 @@ public class UserInputConsole {
             ClientResponseDto<Student> student1 = null; // Declare student1 outside the try block
             do {
                 try {
+                    System.out.println();
+                    System.out.println("-----------REGISTRATION:-----------");
                     String name1 = ui.inputText("Please enter your username: ");
                     String email1 = ui.inputText("Please enter your email: ");
                     String password1 = ui.inputText("Please enter your password: ");
@@ -64,7 +87,8 @@ public class UserInputConsole {
                 Student student2 = studentService.findStudentById(student1Id);
                 Student student = studentService.addCourseToStudent(student2, chosenCourseId);
                 System.out.println(student);
-                System.out.println("Familiarize yourself with the course: ");
+                System.out.println();
+                System.out.println("---------FAMILIARIZE YOURSELF WITH THE COURSE: ---------");
                 studentService.printCourseDataByStudent(student2);
                 System.out.println("Time to learn!");
                 System.out.println("...3");
@@ -73,6 +97,7 @@ public class UserInputConsole {
                 System.out.println("Are you ready?");
                 System.out.println("If you are not, it's not my fault :-)");
                 System.out.println("Now it's time for exam :-))");
+                System.out.println();
                 List<Integer> studentAnswers = testResultService.createStudentAnswers(student1Id);
                 Integer currGrade = testResultService.calculateCurrentGrade(student1Id, studentAnswers);
                 System.out.println("you answered " + currGrade + " questions correctly");
@@ -107,10 +132,12 @@ public class UserInputConsole {
         boolean validInput = false;
 
         while (!validInput) {
-            System.out.println("All courses: ");
+            System.out.println();
+            System.out.println("---------ALL COURSES FOR CHOICE:---------");
             courseService.printAllCourses();
 
             try {
+                System.out.println("------------------------------------");
                 id = Integer.parseInt(ui.inputText("Please enter the number of the chosen course: "));
                 validInput = true; // If parsing succeeds, set validInput to true to exit the loop
             } catch (NumberFormatException e) {
@@ -120,11 +147,5 @@ public class UserInputConsole {
         }
         return id;
     }
-
-
-
-
-
-
 
 }
