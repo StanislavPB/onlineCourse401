@@ -110,11 +110,7 @@ public class UserInputConsole {
                 System.out.println(student1Updated);
                 // Print all students
                 System.out.println(studentService.findAllStudents());
-                System.out.println("===================== FOR ADMIN =================");
-                analyzeService.bestStudentsInSchool();
-                analyzeService.countAllStudentsInSchlool();
-                analyzeService.testPassRate();
-                System.out.println("===================== FOR ADMIN =================");
+                System.out.println();
                 // Ask if the user wants to select a new course
                 String input = ui.inputText("Do you want to select a new course? (Type 'ok' to select a new course or anything else to exit): ");
                 wantToSelectNewCourse = input.trim().equalsIgnoreCase("ok");
@@ -147,5 +143,18 @@ public class UserInputConsole {
         }
         return id;
     }
+        public void analyze() {
+        System.out.println("===================== FOR ADMIN =================");
+        System.out.println("----- ANALYZE 1 -------");
+        analyzeService.bestStudentsInSchool();
+        System.out.println();
+        System.out.println("----- ANALYZE 2 -------");
+        analyzeService.countAllStudentsInSchlool();
+        System.out.println();
+        System.out.println("----- ANALYZE 3 -------");
+        analyzeService.testPassRate();
+        System.out.println("----- END ANALYZE  -------");
+        System.out.println();
 
+    }
 }

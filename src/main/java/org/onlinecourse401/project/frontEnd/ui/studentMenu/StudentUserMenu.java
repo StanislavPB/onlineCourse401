@@ -16,7 +16,8 @@ public class StudentUserMenu {
         while (continueExecution) {
             System.out.println("Welcome to 'Online Course 401':)");
             System.out.println("0. Start");
-            System.out.println("1. Exit");
+            System.out.println("1. Analyze");
+            System.out.println("2. Exit");
 
             int choice = userInputConsole.getInputChoice();
 
@@ -25,6 +26,9 @@ public class StudentUserMenu {
                     userInputConsole.inputRegistrationData();
                     break;
                 case 1:
+                    userInputConsole.analyze();
+                    break;
+                case 2:
                     continueExecution = false;
                     System.out.println("Exiting...");
                     break;

@@ -25,29 +25,25 @@ public class OnlineCourse401App {
         TestResultService testResultService = new TestResultService(studentRepository,testResultRepository,validationRequest);
         UploadCourseData uploadQuestionData = new UploadCourseData(courseService, questionService,testControlService);
         AnalyzeService analyzeService = new AnalyzeService(studentRepository);
+
+        System.out.println("====================  COURSES HISTORY ===================");
         uploadQuestionData.inputCourseTestQuestionData();
         System.out.println();
 
         //History:
         UIHistory uiHistory = new UIHistory(courseService,studentService,testResultService);
-        System.out.println("========== Student 1 ==============");
+
+        System.out.println();
+        System.out.println("====================  STUDENTS HISTORY ===================");
+        System.out.println("--------------- Student 1--------------- ");
         uiHistory.inputRegistrationDataStudent1();
         uiHistory.chooseCourseByStudent1();
-        System.out.println("========== Student 2 ==============");
+        System.out.println("--------------- Student 2--------------- ");
         uiHistory.inputRegistrationDataStudent2();
         uiHistory.chooseCourseByStudent2();
+        System.out.println();
 
-        /*System.out.println("========================USER INPUT CONSOLE========================================================0");
-
-        //Work from console:
-        UserInputConsole uiConsole = new UserInputConsole(courseService,studentService,testResultService,analyzeService);
-        uiConsole.inputRegistrationData();
-
-
-         */
-
-
-        System.out.println("========================StudentUserMenu========================================================0");
+        System.out.println("======================== STUDENT USER MENU ========================================================0");
         UserInputConsole uiConsole = new UserInputConsole(courseService,studentService,testResultService,analyzeService);
         StudentUserMenu studentUserMenu = new StudentUserMenu(uiConsole);
         studentUserMenu.displayMenu();
