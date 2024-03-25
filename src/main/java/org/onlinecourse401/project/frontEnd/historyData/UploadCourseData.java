@@ -27,19 +27,19 @@ public class UploadCourseData {
 
         String textQuestion1 = "1. What is the main advantage of using interfaces in Java?";
         String textOption1Q1 = "0. They allow for multiple inheritance.";
-        String textOption2Q1 = "1. They allow for abstraction and multiple inheritance.";
+        String textOption2Q1 = "1. They allow for abstraction.";
         String textOption3Q1 = "2. They allow for abstraction and multiple inheritance.";
-        Integer rightOptionIndexQ1 = 1;
+        Integer rightOptionIndexQ1 = 2;
         String textQuestion2 = "2. What is the purpose of the 'static' keyword in Java?";
         String textOption1Q2 = "0. To create constants.";
-        String textOption2Q2 = "1. To make a method or variable belong to the class rather than an instance of the class.";
+        String textOption2Q2 = "1. To make a method or variable belong to an instance of the class.";
         String textOption3Q2 = "2. To make a method or variable belong to the class rather than an instance of the class.";
-        Integer rightOptionIndexQ2 = 0;
+        Integer rightOptionIndexQ2 = 2;
         String textQuestion3 = "3. What is the difference between '== and '.equals()' in Java?";
         String textOption1Q3 = "0. '==' checks for reference equality, while '.equals()' checks for object equality.";
         String textOption2Q3 = "1. '==' checks for object equality, while '.equals()' checks for reference equality.";
-        String textOption3Q3 = "2. '==' checks for object equality, while '.equals()' checks for reference equality.";
-        Integer rightOptionIndexQ3 = 1;
+        String textOption3Q3 = "2. Both '==' and '.equals()' checks for object equality, but '==' compares references directly, while '.equals()' compares the content or state of objects.";
+        Integer rightOptionIndexQ3 = 0;
         List<String> optionsQ1 = questionService.createOptionsList(textOption1Q1, textOption2Q1, textOption3Q1);
         QuestionDto questionDto1 = questionService.createQuestionDto(textQuestion1, optionsQ1, rightOptionIndexQ1);
 
