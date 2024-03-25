@@ -33,6 +33,7 @@ public class AnalyzeServiceTest {
         verify(studentRepository, times(1)).findAll();
     }
 
+
         @Test
         public void testPrintResults() {
             // Создаем макет сервиса анализа

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class CourseServiceTest {
 
+
 // тест проверяет, что метод createContentList класса CourseService корректно
 // создает список содержимого (List<String>) из двух переданных строк
 // content1 и content2
