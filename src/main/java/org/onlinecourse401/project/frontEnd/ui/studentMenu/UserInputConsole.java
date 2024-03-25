@@ -146,10 +146,10 @@ public class UserInputConsole {
         public void analyze() {
         System.out.println("===================== FOR ADMIN =================");
         System.out.println("----- ANALYZE 1 -------");
-        analyzeService.bestStudentsInSchool();
+        analyzeService.countAllStudentsInSchlool();
         System.out.println();
         System.out.println("----- ANALYZE 2 -------");
-        analyzeService.countAllStudentsInSchlool();
+        analyzeService.bestStudentsInSchool();
         System.out.println();
         System.out.println("----- ANALYZE 3 -------");
         analyzeService.testPassRate();

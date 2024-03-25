@@ -15,9 +15,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-//(add (Request: StudentDto, Response: ClientResponse), remove
-// (Request: StudentDto, Response: ClientResponse), find by id
-// (Request: Integer studentId, Response:  ClientResponse)
 public class StudentService {
 
     private final StudentRepositoryInterface studentRepository;
@@ -42,11 +39,7 @@ public class StudentService {
         }
     }
 
-
-
-
-//Step1:
-    //1.metod: sozdaem list / korzinu kursov,kotorye hochet projti student:
+    // sozdaem list / korzinu kursov,kotorye hochet projti student:
 public Student addCourseToStudent(Student student, Integer idCourse) {
     Optional<Course> optionalCourse = courseRepository.findById(idCourse);
 
@@ -74,30 +67,8 @@ public Student addCourseToStudent(Student student, Integer idCourse) {
             System.out.println("Description: "+student.getCourseByStudent().getDescription());
             System.out.println("Content1: "+student.getCourseByStudent().getContent().get(0));
             System.out.println("Content2: "+student.getCourseByStudent().getContent().get(1));
-
-    }
-/*
-    public Student addTestResultsToStudent(Integer studentId, List<TestResult> allTestResults){
-       Student student = findStudentById(studentId);
-        List<TestResult> studentTestResults = student.getCourseTestResults();
-
-        for (TestResult result : allTestResults) {
-            if (result.getStudentId().equals(student.getId())) {
-             //   List<TestResult> oneStudentTestResults = new ArrayList<>();
-                studentTestResults.add(result);
-            //    oneStudentTestResults.add(result);
-            //    student.setCourseTestResults(oneStudentTestResults);
-                student.setCourseTestResults(studentTestResults);
-            } else {
-                student.setCourseTestResults(studentTestResults);
-            }
-        }
-        studentRepository.update(student);
-
-        return student;
     }
 
- */
 public Student addTestResultsToStudent(Integer studentId, List<TestResult> allTestResults) {
     Student student = findStudentById(studentId);
     List<TestResult> studentTestResults = new ArrayList<>();

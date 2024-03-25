@@ -52,7 +52,7 @@ public class TestResultService {
             throw new IllegalArgumentException("Student not found");
         }
     }
-//Step2: metod ocenki otvetov
+// metod ocenki otvetov
     public Integer calculateCurrentGrade(Integer idStudent, List<Integer> studentAnswers) {
         Optional<Student> optionalStudent = studentRepository.findById(idStudent);
         if (optionalStudent.isPresent()) {
