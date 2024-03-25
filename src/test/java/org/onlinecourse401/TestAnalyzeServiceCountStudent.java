@@ -5,20 +5,17 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.onlinecourse401.project.backEnd.entity.Student;
-import org.onlinecourse401.project.backEnd.repositories.StudentRepository;
 import org.onlinecourse401.project.backEnd.repositories.StudentRepositoryInterface;
 import org.onlinecourse401.project.backEnd.service.allServices.AnalyzeService;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 
-public class AnalyzeServiceTest {
+public class TestAnalyzeServiceCountStudent {
 
     @Mock
     private StudentRepositoryInterface studentRepository;
