@@ -54,9 +54,9 @@ public class UIHistory {
         //    System.out.println("Now it's time for exam :-))");
       //  List<Integer> studentAnswers = testResultService.createStudentAnswers(student1Id); //metod dlja UserInputConsole
        List<Integer> studentAnswers = new ArrayList<>();
+        studentAnswers.add(2);
         studentAnswers.add(1);
-        studentAnswers.add(1);
-        studentAnswers.add(1);
+        studentAnswers.add(0);
 
         Integer currGrade = testResultService.calculateCurrentGrade(student1Id,studentAnswers);
         //   System.out.println("you answered "+currGrade+" questions correctly");
