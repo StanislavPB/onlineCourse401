@@ -1,4 +1,4 @@
-package org.onlinecourse401.TesterLN;
+package org.onlinecourse401.LN;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

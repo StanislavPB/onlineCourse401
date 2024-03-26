@@ -1,4 +1,4 @@
-package org.onlinecourse401.TesterLN;
+package org.onlinecourse401.LN;
 
 import org.junit.jupiter.api.Test;
 import org.onlinecourse401.project.backEnd.repositories.StudentRepositoryInterface;

@@ -1,4 +1,4 @@
-package org.onlinecourse401;
+package org.onlinecourse401.AT;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
